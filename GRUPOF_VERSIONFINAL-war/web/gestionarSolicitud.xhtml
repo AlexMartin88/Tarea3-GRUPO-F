@@ -1,0 +1,127 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                    
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+     <link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico"/>
+    <ui:define name="title">Gestionar solicitud</ui:define>
+    <ui:define name="content">
+        <c:choose>
+        
+                <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI'}">
+                    <h1 var = "i" value="#{ListaActividades.gestionarSolicitudes()}">Gestionar solicitud</h1>
+                    <center>
+                      
+                        <h:form id="ListaActividades">
+                            <h:inputHidden value="#{ListaActividades.a.codActividad}"></h:inputHidden>
+                            <h:inputHidden value="#{ListaActividades.a.nombreActividad}"></h:inputHidden>
+                            <h:inputHidden value="#{ListaActividades.a.tipoActividad}"></h:inputHidden>
+                             <h:inputHidden value="#{ListaActividades.a.localizacion}"></h:inputHidden>
+                            <h:inputHidden value="#{ListaActividades.a.descripcion}"></h:inputHidden>  
+                            <h:inputHidden value="#{ListaActividades.a.capacidadesNecesarias}"></h:inputHidden>
+                            <h:inputHidden value="#{ListaActividades.a.estadoActividad}"></h:inputHidden>
+                            <h:inputHidden value="#{ListaActividades.a.fechaInicio}"></h:inputHidden>
+                            <h:inputHidden value="#{ListaActividades.a.fechaFin}"></h:inputHidden>      
+                            
+                                          
+                           
+                         
+                            
+                         <table id="tablaListaActividades">
+                             <tr>
+                                 
+                                 <td>Código de Actividad </td>
+                                 <td><h:outputText  value="#{ListaActividades.a.codActividad}"/></td>
+                             </tr>
+                             
+                             <tr>
+                                 <td>Organización solicitante </td>
+
+                                 <td><h:outputText  value="#{ListaActividades.a.creadorONG.nombreONG}"/></td>
+                                 
+                             </tr>
+                            
+                             
+                             <tr>
+                                 <td>Nombre Actividad </td>
+
+                                 <td><h:outputText  value="#{ListaActividades.a.nombreActividad}"/></td>
+                             </tr>
+                               <tr>
+     
+                            <td>Tipo de actividad </td>
+                            <td><h:outputText  value="#{ListaActividades.a.tipoActividad}"/></td>
+                            </tr>  
+                            
+                             <tr>
+                            <td>Localización </td>
+                            <td><h:outputText  value="#{ListaActividades.a.localizacion}"/></td>
+                            </tr>
+                        
+                            <tr>
+                            <td>Descripción</td>
+                            <td><h:outputText  value="#{ListaActividades.a.descripcion}"/></td>
+                            </tr>      
+                     
+                            <tr>
+                            <td>Capacidades necesarias</td>
+                            <td><h:outputText  value="#{ListaActividades.a.capacidadesNecesarias}"/></td>
+                            </tr>  
+                        
+                            <tr>
+                                 <td>Fecha Inicio </td>
+                                 <td><h:outputText  value="#{ListaActividades.a.fechaInicio}"/></td>
+                            </tr>
+
+                             <tr>
+                                 <td>Fecha Fin </td>
+                                 <td><h:outputText  value="#{ListaActividades.a.fechaFin}"/></td>
+                             </tr>
+                              <tr>
+                                 <td>Estado Actividad </td>
+                                 <td><h:outputText  value="#{ListaActividades.a.estadoActividad}"/></td>
+                             </tr>
+                             
+                             <tr>
+                            <td>Estado solicitud</td>
+                            <td>
+                                <h:selectOneMenu  value="#{ListaActividades.a.estadoSolicitud}"  >
+                                    
+                                    <f:selectItem itemValue="ACEPTADA" itemLabel="ACEPTADA"  />
+                                    <f:selectItem itemValue="DENEGADA" itemLabel="DENEGADA"  />
+                                  
+
+                                </h:selectOneMenu>
+                                
+                                
+                            </td>
+                        </tr> 
+
+                           <tr>
+
+                 <td>Motivo Denegación</td>
+                 <td><h:inputText value="#{ListaActividades.a.motivo}"></h:inputText></td>
+                   </tr>
+                       
+                            
+                         </table>
+                            <h:commandButton value="Guardar Cambios" styleClass="btnAceptar"  action="#{ListaActividades.modificarSolicitud()}" /> 
+                            <h:commandButton value="Volver atrás"   styleClass="btnOtro"  action="participacionActividad.xhtml" />
+                       
+                     </h:form>
+                          
+                        
+                    </center>
+                  
+                    
+                 
+                </c:when>
+       
+            <c:otherwise>
+                <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>
+            </c:otherwise>
+        </c:choose>
+    </ui:define>
+</ui:composition>

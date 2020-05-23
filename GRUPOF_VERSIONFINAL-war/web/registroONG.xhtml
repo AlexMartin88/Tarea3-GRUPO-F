@@ -1,0 +1,88 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                    
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico"/>
+    <ui:define name="title">Registro Organizacion</ui:define>
+    <ui:define name="content">
+    
+  
+              <center>
+                <h2>REGISTRO ORGANIZACION</h2>
+              
+                    
+                       
+                <h:form>
+                    
+                      
+                   <table id="tablaListaActividades">
+                      
+                      
+                            
+                        <tr>
+                            <td>Nombre </td>
+
+                            <td><h:inputText  value="#{login.usuario.nombreONG}" class="btnW" required="true" requiredMessage="Falta rellenar nombre"></h:inputText></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Sede </td>
+
+                            <td><h:inputText  value="#{login.usuario.sede}" class="btnW" required="true" requiredMessage="Falta rellenar Sede"></h:inputText></td>
+                        </tr>
+                        
+                         <tr>
+                            <td>Propósito </td>
+
+                            <td><h:inputText  value="#{login.usuario.proposito}" class="btnW" required="true" requiredMessage="Falta rellenar propósito"></h:inputText></td>
+                        </tr>      
+                       
+                        
+                        <tr>
+                            <td>Email </td>
+
+                            <td><h:inputText  value="#{login.usuario.email}" class="btnW" required="true" requiredMessage="Falta rellenar Email"></h:inputText></td>
+                        </tr>
+                       <tr>
+                          <td>Contraseña </td>
+
+                          <td><h:inputSecret  value="#{login.usuario.password}" class="btnW" required="true" requiredMessage="Falta rellenar contraseña"></h:inputSecret></td>
+                        </tr>
+                        
+                       
+                        <tr>
+                            <td>Rol</td>
+
+                            <td>
+                                
+                                <h:selectOneMenu class="btnW" value="#{login.usuario.rol}"  >
+                                    
+                                    <f:selectItem itemValue="ORGANIZACION" itemLabel="ORGANIZACION" class="btnW" />
+                                  
+                                    
+                                </h:selectOneMenu>
+                                
+                            </td>
+                              
+                        </tr>
+                           
+                    </table>
+            
+                    <h:commandButton styleClass="btnAceptar"  value="Guardar cambios" action="#{login.createUser()}" />
+                   
+                </h:form>
+                <h:form>
+                      <h:commandButton styleClass="btnCancelar"  value="Cancelar" action="login.xhtml" /> 
+                    
+                </h:form>
+                
+                   
+              
+                    </center>
+                
+           
+    </ui:define>
+</ui:composition>

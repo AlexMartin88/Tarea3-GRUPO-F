@@ -1,0 +1,44 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+ <link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico" />
+ 
+                    
+    <ui:define name="title">Login</ui:define>
+    <ui:define name="content">
+        <c:choose>
+            <c:when test="#{empty controlAutorizacion.usuario}">
+                
+                <center>
+                
+                <h:form class="form-box">
+                    <h2>LOG IN</h2>
+                    
+                    <div class="email">   
+                        <h:inputText styleClass="email" value="#{login.usuario.email}" p:placeholder="Introduce email" />                       
+                    </div>                          
+                    <div class="email">
+                        <h:inputSecret styleClass="email" value="#{login.usuario.password}" p:placeholder="Introduce contraseña" />    
+                    </div>                           
+                    <div class="boton">
+                        <h:commandButton  styleClass="btnOtro"  value="Iniciar sesión" action="#{login.autenticar()}"/>                            
+                    </div>
+                    
+                    <h:commandButton class="registro" type="submit" value="Registrate como usuario" action="#{login.registro()}" />
+                    <h:commandButton class="registro" type="submit" value="Registrate como organización" action="#{login.registroONG()}" />
+                </h:form>
+                        
+                </center>
+            </c:when>
+            <c:otherwise>
+                
+                <p>Debe salir de la aplicación si quiere entrar como otro usuario</p>
+            </c:otherwise>
+        </c:choose>
+        <h:messages/>
+    </ui:define>
+</ui:composition>

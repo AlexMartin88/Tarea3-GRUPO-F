@@ -1,0 +1,65 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                    
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+     <link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico"/>
+    <ui:define name="title">ValoracionesPublicas</ui:define>
+    <ui:define name="content">
+        <c:choose>
+            <c:when test="#{controlAutorizacion.getUsuario().getRol() != null}">
+                <h1>Valoraciones Públicas</h1>  
+                <center>
+                    
+                    
+                    <h:form> <!--id="Valoracion"-->
+                        <!--<h:inputHidden value="#{ValoracionesPublicas.a.codActividad}"></h:inputHidden>  -->
+                    <table id="tablaListaActividades">
+                        
+                        <tr>
+                            <td>CodActividad</td>
+                            <td>
+                                <h:outputText value="#{ValoracionesPublicas.actividadValoracion.codActividad}"></h:outputText>
+                                </td>
+                        </tr>
+                        <tr>
+                           <td>Calificacion</td>
+                           <td>
+                             <h:selectOneMenu value="#{ValoracionesPublicas.v.calificacion}"  >
+                                      
+                                    <f:selectItem itemValue="0" itemLabel="0"  />
+                                    <f:selectItem itemValue="1" itemLabel="1"  />
+                                    <f:selectItem itemValue="2" itemLabel="2"  />  
+                                    <f:selectItem itemValue="3" itemLabel="3"  />  
+                                    <f:selectItem itemValue="4" itemLabel="4"  />  
+                                    <f:selectItem itemValue="5" itemLabel="5"  />  
+                                    <f:selectItem itemValue="6" itemLabel="6"  />  
+                                    <f:selectItem itemValue="7" itemLabel="7"  />  
+                                    <f:selectItem itemValue="8" itemLabel="8"  />  
+                                    <f:selectItem itemValue="9" itemLabel="9"  />  
+                                    <f:selectItem itemValue="10" itemLabel="10"  />
+                                    
+                                  
+                                 </h:selectOneMenu>  
+                           </td>
+                        </tr>
+                        <tr>
+                            <td>Comentarios</td>   
+                             <td><h:inputText  value="#{ValoracionesPublicas.v.comentariosUsuario}"></h:inputText></td>
+                        </tr>
+                    </table>
+                        <h:commandButton styleClass="btnAceptar" value ="Aceptar" action="#{ValoracionesPublicas.crear(controlAutorizacion.usuario)}"/> <!--verActividad.xhtml -->
+                     <h:commandButton styleClass="btnCancelar" value ="Volver Atrás" action="CRUDActividades.xhtml"/>
+                    
+                
+                    </h:form>
+                </center>
+            </c:when>
+            <c:otherwise>
+                <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>
+            </c:otherwise>
+        </c:choose>
+    </ui:define>
+</ui:composition>

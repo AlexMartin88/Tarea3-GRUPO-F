@@ -1,0 +1,52 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                >
+    
+     <link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico"/>
+    <ui:define name="title">Redactar un nuevo mensaje</ui:define>
+    <ui:define name="content">
+        <c:choose>
+            <c:when test="#{controlAutorizacion.usuario.rol == 'ORGANIZACION' || controlAutorizacion.usuario.rol == 'PDI'||controlAutorizacion.usuario.rol == 'PAS' ||controlAutorizacion.usuario.rol == 'ALUMNO' }">
+                <h1>Redactar nuevo mensaje</h1>
+                <center>
+                   
+                <h:form id="Mensajes">
+                    <table id="tablaListaActividades">
+                        <tr>
+                            <td>Destinatario</td>
+                            <td>
+                                <h:inputText id ="destinatario" value="#{ListaMensajes.m1.receptor}" />
+                            </td> 
+                        </tr>
+                        <tr>
+                            <td>Asunto</td>
+                            <td><h:inputText id ="asunto" value="#{ListaMensajes.m1.asunto}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Mensaje</td>
+                            <td>
+                                <h:inputText id ="mensaje" value="#{ListaMensajes.m1.texto}" />
+                            </td> 
+                        </tr>
+                    </table>
+                    
+                      <h:commandButton value="Enviar mensaje" styleClass="btnAceptar"  action="#{ListaMensajes.crearMensaje()}" /> 
+                  
+                    <h:commandButton value="Cancelar" styleClass="btnCancelar"  action="mensajesRecibidos.xhtml" /> 
+                </h:form>
+                     
+                    
+                </center>
+               
+            </c:when>
+           
+            <c:otherwise>
+                <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>
+            </c:otherwise>
+            
+        </c:choose> 
+    </ui:define>
+</ui:composition>

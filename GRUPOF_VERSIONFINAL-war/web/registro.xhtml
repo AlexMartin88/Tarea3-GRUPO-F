@@ -1,0 +1,109 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                    
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+     <link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico"/>
+    <ui:define name="title">Registro</ui:define>
+    <ui:define name="content">
+    
+  
+              <center>
+                <h2>REGISTRO</h2>
+              
+                    
+                       
+                <h:form>
+                    
+                      
+                   <table id="tablaListaActividades">
+                      
+                      
+                        <tr>
+                            <td>Nombre </td>
+
+                            <td><h:inputText  value="#{login.usuario.nombre}" class="btnW" required="true" requiredMessage="Falta rellenar nombre"></h:inputText></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Apellidos </td>
+
+                            <td><h:inputText  value="#{login.usuario.apellidos}" class="btnW" required="true" requiredMessage="Falta rellenar Apellidos"></h:inputText></td>
+                        </tr>
+                        
+                         <tr>
+                            <td>DNI </td>
+
+                            <td><h:inputText  value="#{login.usuario.DNI}" class="btnW" required="true" requiredMessage="Falta rellenar DNI"></h:inputText></td>
+                        </tr>      
+                        <tr>
+                            <td>Fecha Nacimiento </td>
+
+                            <td><h:inputText  value="#{login.usuario.fechaNacimiento}" class="btnW" required="true" requiredMessage="Falta rellenar Fecha de nacimiento"></h:inputText></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Email </td>
+
+                            <td><h:inputText  value="#{login.usuario.email}" class="btnW" required="true" requiredMessage="Falta rellenar Email"></h:inputText></td>
+                        </tr>
+                       <tr>
+                          <td>Contraseña </td>
+
+                            <td><h:inputSecret  value="#{login.usuario.password}" class="btnW" required="true" requiredMessage="Falta rellenar contraseña"></h:inputSecret></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Formacion </td>
+
+                            <td><h:inputText  value="#{login.usuario.formacion}" class="btnW" required="true" requiredMessage="Falta rellenar formacion"></h:inputText></td>
+                        </tr>   
+                        
+                        <tr>
+                            <td>Telefono </td>
+
+                            <td><h:inputText  value="#{login.usuario.telefono}" class="btnW" required="true" requiredMessage="Falta rellenar telefono"></h:inputText></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Idioma </td>
+
+                            <td><h:inputText  value="#{login.usuario.idioma}" class="btnW" required="true" requiredMessage="Falta rellenar idioma"></h:inputText></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Rol </td>
+
+                            <td>
+                                
+                                <h:selectOneMenu class="btnW" value="#{login.usuario.rol}"  >
+                                    
+                                    <f:selectItem itemValue="ALUMNO" itemLabel="ALUMNO" class="btnW" />
+                                    <f:selectItem itemValue="PDI" itemLabel="PDI" class="btnW"/>
+                                    <f:selectItem itemValue="PAS" itemLabel="PAS" class="btnW"/>
+                                    
+                                </h:selectOneMenu>
+                                
+                            </td>
+                              
+                        </tr>
+                           
+                    </table>
+            
+                    <h:commandButton styleClass="btnAceptar"  value="Guardar cambios" action="#{login.createUser()}" />
+                   
+                </h:form>
+                <h:form>
+                      <h:commandButton styleClass="btnCancelar"  value="Cancelar" action="login.xhtml" /> 
+                    
+                </h:form>
+                
+                   
+              
+                    </center>
+                
+           
+    </ui:define>
+</ui:composition>

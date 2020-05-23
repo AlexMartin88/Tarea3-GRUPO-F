@@ -1,0 +1,62 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                >
+     <link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico"/>
+    <ui:define name="title">Solicitudes rechazadas</ui:define>
+    <ui:define name="content">
+        <c:choose>
+          
+                <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'ORGANIZACION'}">
+                    <h1>Solicitudes rechazadas</h1>
+                   
+                    <center>
+                       
+                <div class="bordeTablaActividades">
+                    <table id="tablaListaActividades">
+                        <thead>
+                                <tr>
+                                        <th>Codigo Actividad</th>
+                                        <th>Nombre Actividad</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Fecha Fin</th>
+                                        <th>Estado Actividad</th>
+                                        <th>Motivo de la denegación</th>
+                                
+                                </tr>
+                            </thead>
+                        
+                        <tbody>
+                            <ui:repeat var = "i" value="#{ListaActividades.actRechazadas(controlAutorizacion.usuario.userID)}">
+                                <tr>                         
+                                    <td>#{i.codActividad}</td>
+                                    <td>#{i.nombreActividad}</td>
+                                    <td>#{i.fechaInicio}</td>
+                                    <td>#{i.fechaFin}</td>
+                                    <td>#{i.estadoActividad}</td>
+                                    <td>#{i.motivo}</td>
+                                    
+
+                                     <td>
+                                         <center>  
+                                         <h:form> <h:column> <h:commandButton styleClass="btnOtro"  value="Modificar solicitud" action="#{ListaActividades.modificarActRechazadas(i.codActividad)}"/> </h:column> </h:form>
+                                         </center>
+                                     </td>
+                                </tr>
+                            </ui:repeat>
+                        </tbody>
+                    </table>
+                </div>
+                
+                        
+                    </center>
+                </c:when>
+       
+            <c:otherwise>
+                <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>
+            </c:otherwise>
+        </c:choose>
+    </ui:define>
+</ui:composition>

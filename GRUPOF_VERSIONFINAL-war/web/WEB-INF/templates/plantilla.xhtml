@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+         <link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico"/>
+        <title>
+            <ui:insert name="title">Facelets Template</ui:insert>
+        </title>
+    </h:head>
+
+    <h:body>
+        <div id="top" class="top">
+            
+            <div class="LogoUMA">
+            <center>
+    
+                <img alt="Logo UMA" align="center" width="500" height="100" src="./resources/img/logoUMA.png"/>
+            </center>
+            </div>
+            <h:form id="menu">
+                <ul class="menulist">
+                    <c:if test="#{controlAutorizacion.usuario.rol != null}">
+                    <li><h:commandLink action="#{controlAutorizacion.home()}" value="INICIO"/></li>
+                    </c:if>
+                    
+                    <!-- 
+                    SI VEIS QUE TODOS LOS MÉTODOS INCOMPLETOS HAY porRealizar, NO OS RAYEIS, LO HE PUESTO ASI
+                    PARA QUE EL PROGRAMA NO SE RAYE Y NO DE ERRORES, SI HABEIS CREADO OTRO MÉTODO EN EL CONTROLDEAUTORIZACIÓN.JAVA
+                    SOLO TENEIS QUE SUSTITUIRLO EN EL LUGAR CORRESPONDIENTE
+                    POR EJEMPLO: MI PERFIL -> controlAutorizacion.MiPerfil()
+                    FASILITo
+                    -->
+                    
+                    <!-- OPCIONES PARA ALUMNO-->
+                    <c:if test="#{controlAutorizacion.usuario.rol == 'ALUMNO'}">
+                        <li><h:commandLink action="#{controlAutorizacion.CRUDActividades()}" value="ACTIVIDADES"/></li>
+                        <li><h:commandLink action="#{controlAutorizacion.Noticias()}" value="NOTICIAS"/></li>
+                        
+                       
+                      
+                        <li><h:commandLink action="#{controlAutorizacion.ApS}" value="APS"/></li>
+                        <li><h:commandLink action="#{controlAutorizacion.perfilUsuario()}" value="MI PERFIL"/></li>
+                        <li><h:commandLink action="mensajesRecibidos.xhtml" value="MIS MENSAJES"/></li>
+                    </c:if>
+                    
+                    <!-- OPCIONES PARA PDI-->
+                    <c:if test="#{controlAutorizacion.usuario.rol == 'PDI'}">
+                        <li><h:commandLink action="#{controlAutorizacion.CRUDActividades()}" value="ACTIVIDADES"/></li>
+                        <li><h:commandLink action="#{controlAutorizacion.Noticias()}" value="NOTICIAS"/></li>
+                        <li><h:commandLink action="#{controlAutorizacion.EvaluarUser()}" value="EVALUAR USUARIO"/></li>
+                        <li><h:commandLink action="#{controlAutorizacion.ParticipacionActividad()}" value="SOLICITUDES"/></li>
+                        <li><h:commandLink action="#{controlAutorizacion.ApS}" value="APS"/></li>
+                        <li><h:commandLink action="#{controlAutorizacion.perfilUsuario()}" value="MI PERFIL"/></li>
+                        <li><h:commandLink action="mensajesRecibidos.xhtml" value="MIS MENSAJES"/></li>
+                    </c:if>
+                    
+                    <!-- Opciones para PAS-->
+                    <c:if test="#{controlAutorizacion.usuario.rol == 'PAS'}">
+                        <li><h:commandLink action="#{controlAutorizacion.CRUDActividades()}" value="ACTIVIDADES"/></li>
+                        <li><h:commandLink action="#{controlAutorizacion.Noticias()}" value="NOTICIAS"/></li>
+                      
+                        <li><h:commandLink action="#{controlAutorizacion.ApS}" value="APS"/></li>
+                        <li><h:commandLink action="#{controlAutorizacion.perfilUsuario()}" value="MI PERFIL"/></li>
+                        <li><h:commandLink action="mensajesRecibidos.xhtml" value="MIS MENSAJES"/></li>
+                    </c:if>
+
+                
+                    
+                    <c:if test="#{controlAutorizacion.usuario.rol == 'ORGANIZACION'}">
+                        
+                        <li><h:commandLink action="#{controlAutorizacion.Propuesta()}" value="PROPUESTAS"/></li>
+                        <li><h:commandLink action="ActividadesONG.xhtml" value="MIS ACTIVIDADES"/></li>
+                        <li><h:commandLink action="#{controlAutorizacion.Noticias()}" value="NOTICIAS"/></li>
+                        <li><h:commandLink action="#{controlAutorizacion.ApS}" value="APS"/></li>
+                        <li><h:commandLink action="#{controlAutorizacion.perfilUsuario()}" value="MI PERFIL"/></li>
+                        <li><h:commandLink action="mensajesRecibidos.xhtml" value="MIS MENSAJES"/></li>
+
+                    </c:if>
+                    
+                    <!-- ULTIMA OPCIÓN PARA SALIR -->
+                    <c:if test="#{!empty controlAutorizacion.usuario}">
+                        <li><h:commandLink action="#{controlAutorizacion.logout()}" value="SALIR"/></li>
+                    </c:if>
+                </ul>
+            </h:form>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+        
+        <div id="footer" class="footer">
+            Design by GRUPO F | Todos los derechos reservados<br/>Sistemas de Información para Internet<br/><b>Universidad de Málaga</b>
+        </div>
+    </h:body>
+</html>

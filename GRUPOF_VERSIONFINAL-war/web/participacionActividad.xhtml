@@ -1,0 +1,67 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                >
+     <link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico"/>
+    <ui:define name="title">Solicitudes</ui:define>
+    <ui:define name="content">
+        <c:choose>
+            <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI'}">
+                <h1>LISTA SOLICITUDES</h1>
+                
+                <div class="bordeTablaActividades">
+                    <table id="tablaListaActividades">
+                        <thead>
+                                <tr>
+                                        <th>Codigo Actividad</th>
+                                        <th>Nombre Actividad</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Fecha Fin</th>
+                                        <th>Organización Solicitante</th>
+                                        <th>Estado Actividad</th>
+                                         <th>Localizacion</th>
+                                          <th>Capacidades necesarias</th>
+                                           <th>Tipo de Actividad</th>
+                                            <th>Estado Solicitud</th>
+                                
+                                </tr>
+                            </thead>
+                        
+                        <tbody>
+                            <ui:repeat var = "i" value="#{ListaActividades.gestionarSolicitudes()}">
+                                  <tr>                              
+                                    <td>#{i.codActividad}</td>
+                                    <td>#{i.nombreActividad}</td>
+                                    <td>#{i.fechaInicio}</td>
+                                    <td>#{i.fechaFin}</td>
+                                    <td>#{i.creadorONG.nombreONG} </td>
+                                    <td>#{i.estadoActividad}</td> 
+                                    <td>#{i.localizacion}</td>
+                                    <td>#{i.capacidadesNecesarias}</td>
+                                    <td>#{i.tipoActividad} </td>
+                                    <td>#{i.estadoSolicitud}</td> 
+
+                                 <center>  
+                                    <td> 
+                                         
+                                        <h:form> <h:column> <h:commandButton styleClass="email2"  value="Gestionar solicitud" action="#{ListaActividades.gestionar(i.codActividad)}"/> </h:column> </h:form>
+                                        
+                                    </td>
+                                </center>
+                               </tr>
+                             
+                            </ui:repeat>
+                        </tbody>
+                    </table>
+                </div>
+               
+            </c:when>
+         
+            <c:otherwise>
+                <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>
+            </c:otherwise>
+        </c:choose>
+    </ui:define>
+</ui:composition>

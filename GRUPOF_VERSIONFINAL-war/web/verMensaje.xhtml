@@ -1,0 +1,53 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                >
+     <link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico"/>
+    <ui:define name="title">Ver mensaje</ui:define>
+    <ui:define name="content">
+        <c:choose>
+            <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI' || controlAutorizacion.getUsuario().getRol() == 'PAS' || controlAutorizacion.getUsuario().getRol() == 'ALUMNO' || controlAutorizacion.getUsuario().getRol() == 'ORGANIZACION'}">
+        
+                <h1 var = "i" value="#{ListaMensajes.Mensajes(controlAutorizacion.getUsuario())}">Ver Mensaje</h1>             
+                <center>
+                   
+                <h:form id="ListaMensajes">
+                    <table id="tablaListaActividades">
+                        <tr>
+                             <td>Emisor </td>
+                             <td><h:outputText value="#{i.emisorA}"/></td>
+                        </tr>
+                        
+                          <tr>
+                             <td>Asunto </td>
+                             <td><h:outputText value="#{i.asunto}"/></td>
+                        </tr>
+                        
+                          <tr>
+                             <td>Mensaje </td>
+                             <td><h:outputText value="#{i.texto}" /></td>
+                        </tr>
+                       
+    
+                        
+                    </table>
+                </h:form>
+                     
+                </center>
+                <h:form> 
+                  <br/>
+                  <center>
+                    <h:column> <h:commandButton value="Responder"  styleClass="btnAceptar"  action="CreateMensajes.xhtml" /> </h:column> 
+                    <h:column> <h:commandButton value="Volver Atrás"   styleClass="btnCancelar"  action="mensajesRecibidos.xhtml" /> </h:column> 
+                  </center>
+                </h:form>
+                 
+            </c:when>
+            <c:otherwise>
+                <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>
+            </c:otherwise>
+        </c:choose>
+    </ui:define>
+</ui:composition>
