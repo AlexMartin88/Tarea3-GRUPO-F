@@ -38,10 +38,18 @@ public class ValoracionPublica implements Serializable {
     
     @ManyToOne
     private Actividad act;
-    private Long ID = new Long(1);
+    private Long codActividad;
     
     public ValoracionPublica() {
         
+    }
+
+    public Long getCodActividad() {
+        return codActividad;
+    }
+
+    public void setCodActividad(Long codActividad) {
+        this.codActividad = codActividad;
     }
 
     public Usuario getCreador() {
@@ -59,15 +67,6 @@ public class ValoracionPublica implements Serializable {
     public void setAct(Actividad act) {
         this.act = act;
     }
-
-    public Long getID() {
-        return ID;
-    }
-
-    public void setID(Long ID) {
-        this.ID = ID;
-    }
-    
     public ValoracionPublica(Long id){
         this.IDValoracion = id;
     }

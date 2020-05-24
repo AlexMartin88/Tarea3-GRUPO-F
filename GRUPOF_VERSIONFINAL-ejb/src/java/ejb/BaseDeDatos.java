@@ -48,7 +48,7 @@ public class BaseDeDatos implements BaseDeDatosLocal{
     @Override
     public void aniadirValPub(ValoracionPublica valPub){
         em.persist(valPub);
-        //Query q = em.createNamedQuery("modificarCodActividad").setParameter("cod", codActividad).setParameter("id", valPub.getIDValoracion());    
+       
     }
     @Override
     public void aniadirValPriv(ValoracionPrivada valPriv){
@@ -218,8 +218,8 @@ public class BaseDeDatos implements BaseDeDatosLocal{
     }
     @Override
     public List<Actividad> todasActividadesONG(Long id){
-        Organizacion o=em.find(Organizacion.class, id);
-        Query q = em.createNamedQuery("findAllActividadesONG").setParameter("ong",o);
+        //Organizacion o=em.find(Organizacion.class, id);
+        Query q = em.createNamedQuery("findAllActividadesONG").setParameter("ong",id);
         List<Actividad> actividades = q.getResultList();
         return actividades;
     }
@@ -240,13 +240,7 @@ public class BaseDeDatos implements BaseDeDatosLocal{
          return mensajes;
        
     }
-    @Override 
-    public Organizacion sacarONG(Long id){
-      //  Query q = em.createNamedQuery("sacarONG").setParameter("cod", id);
-        Organizacion o = em.find(Organizacion.class, 5);
-        return o;
-       
-    }
+   
     @Override
     public List<Noticia> todasNoticias(){
         Query q = em.createNamedQuery("findAllNoticias");
@@ -288,9 +282,9 @@ public class BaseDeDatos implements BaseDeDatosLocal{
     }
  @Override
     public List<Actividad> actividadesRechazadas(Long id) {
-       Organizacion o=em.find(Organizacion.class, id);
+     //  Organizacion o=em.find(Organizacion.class, id);
       
-        Query q = em.createNamedQuery("actRechazadas").setParameter("solicitud","DENEGADA").setParameter("ong",o);
+        Query q = em.createNamedQuery("actRechazadas").setParameter("solicitud","DENEGADA").setParameter("ong",id);
         List<Actividad> socilitudes = q.getResultList();
         return socilitudes;
     }
@@ -325,6 +319,11 @@ public class BaseDeDatos implements BaseDeDatosLocal{
   
         em.refresh(l.get(0));
         return l.get(0);   
+    }
+
+    @Override
+    public void modificarValPub(ValoracionPublica v) {
+        em.persist(em.merge(v));
     }
 
    

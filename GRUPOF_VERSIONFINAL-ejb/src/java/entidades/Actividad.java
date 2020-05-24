@@ -17,10 +17,10 @@ import javax.persistence.*;
 @NamedQueries({
     @NamedQuery(name="findAllActividades",query="select a from Actividad a where a.EstadoSolicitud=:estado"),
     //@NamedQuery(name="modificarNoticia",query="update noticia set titulo=:Titulo,descripcion=:Descripcion,Fecha=:fecha where codnoticia=:id"),
-    @NamedQuery(name="findAllActividadesONG",query="select a from Actividad a where a.creadorONG=:ong"),
+    @NamedQuery(name="findAllActividadesONG",query="select a from Actividad a where a.codONG=:ong"),
     @NamedQuery(name="solicitudes",query="select a from Actividad a where a.EstadoSolicitud=:solicitud"),
-    @NamedQuery(name="actRechazadas",query="select a from Actividad a where a.EstadoSolicitud=:solicitud and a.creadorONG=:ong"),
-    @NamedQuery(name="sacarONG",query="select a.creadorONG from Actividad a where a.CodActividad=:cod"),
+    @NamedQuery(name="actRechazadas",query="select a from Actividad a where a.EstadoSolicitud=:solicitud and a.codONG=:ong"),
+   
     
 })
 public class Actividad implements Serializable {
@@ -42,7 +42,7 @@ public class Actividad implements Serializable {
     private String NombreActividad;
     private String EstadoSolicitud;
     private String motivo;
-    private Organizacion ong;
+    private Long codONG;
     @ManyToOne
     private Organizacion creadorONG;
     @OneToMany(mappedBy="participantes")
@@ -57,8 +57,17 @@ public class Actividad implements Serializable {
     @ManyToOne
     private PDI revisar;
     
+    
     public Actividad(){
         
+    }
+
+    public Long getCodONG() {
+        return codONG;
+    }
+
+    public void setCodONG(Long codONG) {
+        this.codONG = codONG;
     }
     
     public Actividad(Long CodActividad, Integer Puntuacion, String FechaInicio, String FechaFin, String Localizacion, String Descripcion, String CapacidadesNecesarias, String EstadoActividad, String TipoActividad, String NombreActividad, String EstadoSolicitud, List<ParticipacionEnActividad> participantes, List<ValoracionPublica> Valoracion, List<Matching> matching, List<Asignatura> Asignaturas) {
@@ -96,12 +105,12 @@ public class Actividad implements Serializable {
     }
     
     
-    public Actividad(Long CodActividad, String NombreActividad, String FechaInicio, String FechaFin, Organizacion ong, String EstadoActividad,String Localizacion,String descripcion,String cap,String tipo, String estadoSol){
+    public Actividad(Long CodActividad, String NombreActividad, String FechaInicio, String FechaFin, String EstadoActividad,String Localizacion,String descripcion,String cap,String tipo, String estadoSol){
         this.CodActividad = CodActividad;
         this.NombreActividad = NombreActividad;
         this.FechaFin = FechaFin;
         this.FechaInicio = FechaInicio;
-        this.ong=ong;
+        
         this.EstadoActividad = EstadoActividad;
         this.EstadoSolicitud=estadoSol;
         this.Localizacion=Localizacion;
@@ -235,14 +244,6 @@ public class Actividad implements Serializable {
 
     public void setMotivo(String motivo) {
         this.motivo = motivo;
-    }
-
-    public Organizacion getOng() {
-        return ong;
-    }
-
-    public void setOng(Organizacion ong) {
-        this.ong = ong;
     }
 
     public Organizacion getCreadorONG() {

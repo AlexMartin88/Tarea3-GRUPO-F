@@ -27,8 +27,10 @@ public class CRUDActividadesController implements Serializable{
     private BaseDeDatosLocal bbdd;
     private ParticipacionEnActividad participacion;
     private Actividad a; 
-    private Long codigo;
-   // private Organizacion ong;
+   private Long codigo;
+   private Organizacion o;
+   //private Long c = o.getUserID();
+   
  
    
 
@@ -64,8 +66,10 @@ public class CRUDActividadesController implements Serializable{
     }
 
     public String createPropuesta(Long id){
-        Organizacion o=bbdd.buscarONG(id-1);
+        codigo = id;
+        o=bbdd.buscarONG(id-1);
         a.setCreadorONG(o);
+        a.setCodONG(id-1);
         bbdd.aniadirActividad(a);        
        
         return "ActividadesONG.xhtml";
@@ -75,11 +79,11 @@ public class CRUDActividadesController implements Serializable{
         return "modificarActividad.xhtml";
     }*/
  
-   public String peticionInscripcion(Actividad act,Usuario u){
-       participacion = new ParticipacionEnActividad("1/05/2009","PENDIENTE",act,u);
+   public String peticionInscripcion(Usuario u,Actividad a){
+       participacion = new ParticipacionEnActividad("1/05/2009","PENDIENTE",a,u);
        bbdd.aniadirParticipante(participacion);
-       act.anadirParticipacionLista(participacion);
-       bbdd.modificarActividad(act);
+       a.anadirParticipacionLista(participacion);
+       bbdd.modificarActividad(a);
        u.anadirParticipacionLista(participacion);
        bbdd.modificarUsuario(u);
        return "verActividad.xhtml";  
@@ -113,32 +117,30 @@ public class CRUDActividadesController implements Serializable{
     }
     
     public String gestionar(Long cod){
-        codigo = cod;
-        a = bbdd.buscarActividad(codigo);
-       //ong = a.getCreadorONG();
-    
-   
+        
+        a = bbdd.buscarActividad(cod);
+       
         return "gestionarSolicitud.xhtml";
     }
     
     public String modificarSolicitud(){
-       Organizacion o=bbdd.buscarONG(codigo);
-       a.setCreadorONG(o);
-        bbdd.modificarActividad(a);
+        
+       bbdd.modificarActividad(a);
+        
         return "participacionActividad.xhtml";
     }
     public List<Actividad> actRechazadas(Long cod){
-        //ong = bbdd.buscarONG(cod-1);
+      
         return bbdd.actividadesRechazadas(cod-1);
     }
 
     public String modificarActRechazadas(Long cod){
-        codigo = cod;
-        a = bbdd.buscarActividad(codigo);
+       
+        a = bbdd.buscarActividad(cod);
         return "modificarSolicitud.xhtml";
     }
     public String modificarActRechazada(){
-      //  a.setCreadorONG(ong);
+      
         bbdd.modificarActividad(a);
         return "solicitudesDenegadas.xhtml";
     }

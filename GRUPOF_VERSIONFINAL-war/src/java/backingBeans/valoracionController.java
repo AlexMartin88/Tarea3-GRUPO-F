@@ -27,12 +27,11 @@ public class valoracionController implements Serializable {
     @Inject 
     private BaseDeDatosLocal bbdd;
     
-    //private List<ValoracionPublica> valoraciones ;
+   
     private ValoracionPublica v;
-    private Long codActividad;
-  private Actividad actividadValoracion;
     private Actividad a;
-    //private Long ID = new Long(1);
+   private Long codActividad;
+    
     
     public valoracionController() {
         //valoraciones = new ArrayList<>();
@@ -42,13 +41,7 @@ public class valoracionController implements Serializable {
         a = new Actividad();
     }
 
-   public Actividad getActividadValoracion() {
-        return actividadValoracion;
-    }
-
-    public void setActividadValoracion(Actividad actividadValoracion) {
-        this.actividadValoracion = actividadValoracion;
-    }
+    
 
     public Actividad getA() {
         return a;
@@ -59,11 +52,11 @@ public class valoracionController implements Serializable {
     }
     
     public String crear(Usuario u){
-        //v.setAct(actividadValoracion);
-        //Actividad a = bbdd.buscarActividad(v.getAct().getCodActividad());
-        //v.setAct(a);
+        
         v.setCreador(u);
-        bbdd.aniadirValPub(v);
+         v.setCodActividad(codActividad);
+        //bbdd.aniadirValPub(v);
+        bbdd.modificarValPub(v);
         return "CRUDActividades.xhtml";
     }
     
@@ -75,10 +68,14 @@ public class valoracionController implements Serializable {
         this.v = v;
     }
 
-    public String Valorar(){
-        //actividadValoracion = a;
-       // codActividad = cod;
-        //actividadValoracion = bbdd.buscarActividad(codActividad);
+    public String Valorar(Long cod){
+       // Actividad a = bbdd.buscarActividad(codActividad);
+         //codActividad = cod;
+       //v.setCodActividad(codActividad);
+      
+      bbdd.aniadirValPub(v);
+       
+       
         return "valoracionesPublicas.xhtml";
     }
     /*public void setValoraciones(List<ValoracionPublica> valoraciones) {

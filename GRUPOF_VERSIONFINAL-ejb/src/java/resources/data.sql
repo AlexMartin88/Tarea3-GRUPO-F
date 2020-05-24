@@ -51,12 +51,12 @@ insert into app.noticia values (890,'Salvar a los niños de posibles enfermadade
 
 
 --ACTIVIDAD--
-insert into app.ACTIVIDAD values(600,'Conocimientos previos del lavado de mano (Curso Lavado de manos de la Complutense)','Actividad correspondiente al lavado de manos','ABIERTA','ACEPTADA','25/11/2020','21/11/2020','Kuala Lumpur','Hands on Kuala Lumpur',8,'VOLUNTARIADO','ONG que cumple con los estatutos del estado',5,null,null);
+insert into app.ACTIVIDAD values(600,'Conocimientos previos del lavado de mano (Curso Lavado de manos de la Complutense)','Actividad correspondiente al lavado de manos','ABIERTA','ACEPTADA','25/11/2020','21/11/2020','Kuala Lumpur','Hands on Kuala Lumpur',8,'VOLUNTARIADO',5,'ONG que cumple con los estatutos del estado',5,null);
 
-insert into app.ACTIVIDAD values(500,'Tener un grado en medicina','Asistencia sanitaria para ocupar en el hospital Carlo Haya','ABIERTA','ACEPTADA','02/02/2020','21/04/2020','Malaga,Spain','Save life',8,'VOLUNTARIADO','ONG que cumple con los estatutos del estado',5,null,null);
+insert into app.ACTIVIDAD values(500,'Tener un grado en medicina','Asistencia sanitaria para ocupar en el hospital Carlo Haya','ABIERTA','ACEPTADA','02/02/2020','21/04/2020','Malaga,Spain','Save life',8,'VOLUNTARIADO',5,'ONG que cumple con los estatutos del estado',5,null);
 
 
-insert into app.ACTIVIDAD values(860,'Tener una licenciatura en bellas artes','Museo Louvre','ABIERTA','DENEGADA','02/02/2020','21/05/2020','Paris,Francia','Painting',null,'FORMACION','mal planteamiento',5,null,null);
+insert into app.ACTIVIDAD values(860,'Tener una licenciatura en bellas artes','Museo Louvre','ABIERTA','DENEGADA','02/02/2020','21/05/2020','Paris,Francia','Painting',null,'FORMACION',5,'mal planteamiento',5,null);
 
 
 

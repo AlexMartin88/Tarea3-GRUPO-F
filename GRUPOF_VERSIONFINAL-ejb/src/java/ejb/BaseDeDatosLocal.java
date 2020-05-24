@@ -56,6 +56,7 @@ public interface BaseDeDatosLocal {
     public void modificarAlumno(Alumno al);
     public void modificarNoticia(Noticia n);
     public void modificarPAS(PAS pas);
+    public void modificarValPub(ValoracionPublica v);
     
     //----Métodos para eliminar en la base de datos----//
     public void eliminarActividad(Long n);
@@ -82,7 +83,7 @@ public interface BaseDeDatosLocal {
     public void compruebaLogin(Usuario u) throws ApSException;
     public Usuario refrescarUsuario(Usuario u) throws ApSException;
     public List<Actividad> todasActividadesONG(Long id);
-    public Organizacion sacarONG(Long id);
+  
   
   
     
