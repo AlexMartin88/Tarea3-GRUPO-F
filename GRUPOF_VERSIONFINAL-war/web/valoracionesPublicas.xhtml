@@ -12,16 +12,16 @@
             <c:when test="#{controlAutorizacion.getUsuario().getRol() != null}">
                 <h1>Valoraciones Públicas</h1>  
                 <center>
+                     
                     
-                    
-                    <h:form> <!--id="Valoracion"-->
-                        <!--<h:inputHidden value="#{ValoracionesPublicas.a.codActividad}"></h:inputHidden>  -->
+                    <h:form>
+                      
                     <table id="tablaListaActividades">
                         
                         <tr>
                             <td>CodActividad</td>
                             <td>
-                                <h:outputText value="#{ValoracionesPublicas.actividadValoracion.codActividad}"></h:outputText>
+                                <h:outputText value="#{ValoracionesPublicas.a.codActividad}"></h:outputText>
                                 </td>
                         </tr>
                         <tr>

@@ -240,6 +240,13 @@ public class BaseDeDatos implements BaseDeDatosLocal{
          return mensajes;
        
     }
+    @Override 
+    public Organizacion sacarONG(Long id){
+      //  Query q = em.createNamedQuery("sacarONG").setParameter("cod", id);
+        Organizacion o = em.find(Organizacion.class, 5);
+        return o;
+       
+    }
     @Override
     public List<Noticia> todasNoticias(){
         Query q = em.createNamedQuery("findAllNoticias");
@@ -289,10 +296,7 @@ public class BaseDeDatos implements BaseDeDatosLocal{
     }
     @Override
     public void aniadirOrganizacion(Organizacion org){//YO
-      /* Random numAleatorio = new Random();
-       Long num = numAleatorio.nextLong();
-       usr.setUserID(num);
-    */
+    
         em.persist(org);
     }
 

@@ -20,7 +20,8 @@ import javax.persistence.*;
     @NamedQuery(name="findAllActividadesONG",query="select a from Actividad a where a.creadorONG=:ong"),
     @NamedQuery(name="solicitudes",query="select a from Actividad a where a.EstadoSolicitud=:solicitud"),
     @NamedQuery(name="actRechazadas",query="select a from Actividad a where a.EstadoSolicitud=:solicitud and a.creadorONG=:ong"),
-    @NamedQuery(name="sacarONG",query="select a.creadorONG from Actividad a where a.CodActividad=:cod")
+    @NamedQuery(name="sacarONG",query="select a.creadorONG from Actividad a where a.CodActividad=:cod"),
+    
 })
 public class Actividad implements Serializable {
 

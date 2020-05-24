@@ -82,6 +82,7 @@ public interface BaseDeDatosLocal {
     public void compruebaLogin(Usuario u) throws ApSException;
     public Usuario refrescarUsuario(Usuario u) throws ApSException;
     public List<Actividad> todasActividadesONG(Long id);
+    public Organizacion sacarONG(Long id);
   
   
     

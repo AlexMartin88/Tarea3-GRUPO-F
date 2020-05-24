@@ -28,7 +28,7 @@ public class CRUDActividadesController implements Serializable{
     private ParticipacionEnActividad participacion;
     private Actividad a; 
     private Long codigo;
-    private Organizacion ong;
+   // private Organizacion ong;
  
    
 
@@ -42,6 +42,7 @@ public class CRUDActividadesController implements Serializable{
 
     public CRUDActividadesController(){
         a = new Actividad(); 
+       // ong = new Organizacion();
        
        
     }
@@ -114,21 +115,20 @@ public class CRUDActividadesController implements Serializable{
     public String gestionar(Long cod){
         codigo = cod;
         a = bbdd.buscarActividad(codigo);
-      //  idONG = id;
-        
-     
-      
+       //ong = a.getCreadorONG();
+    
+   
         return "gestionarSolicitud.xhtml";
     }
     
     public String modificarSolicitud(){
-       //Organizacion o=bbdd.buscarONG(idONG);
-       //a.setCreadorONG(o);
+       Organizacion o=bbdd.buscarONG(codigo);
+       a.setCreadorONG(o);
         bbdd.modificarActividad(a);
         return "participacionActividad.xhtml";
     }
     public List<Actividad> actRechazadas(Long cod){
-        ong = bbdd.buscarONG(cod-1);
+        //ong = bbdd.buscarONG(cod-1);
         return bbdd.actividadesRechazadas(cod-1);
     }
 
@@ -138,7 +138,7 @@ public class CRUDActividadesController implements Serializable{
         return "modificarSolicitud.xhtml";
     }
     public String modificarActRechazada(){
-        a.setCreadorONG(ong);
+      //  a.setCreadorONG(ong);
         bbdd.modificarActividad(a);
         return "solicitudesDenegadas.xhtml";
     }

@@ -14,7 +14,8 @@
                 <center>
                                 
                 <h:form id="ListaActividades">
-                   <!-- <h:inputHidden value="#{ValoracionesPublicas.actividadValoracion.codActividad}"></h:inputHidden>-->
+                 <!--   <h:inputHidden value="#{ValoracionesPublicas.a.codActividad}"></h:inputHidden>-->
+                 
                     <table id="tablaListaActividades">
                         <tr>
                         <td>Código de Actividad</td>
@@ -64,7 +65,7 @@
                         
                     </table>
                      <h:commandButton value="Petición de inscripción"  styleClass="btnOtro"  action="#{ListaActividades.peticionInscripcion(i, controlAutorizacion.getUsuario())}" /> 
-                     <h:commandButton value="Valorar Actividad"   styleClass="btnAceptar"  action="#{ValoracionesPublicas.Valorar(ListaActividades.a.codActividad)}" /> 
+                     <h:commandButton value="Valorar Actividad"   styleClass="btnAceptar"  action="#{ValoracionesPublicas.Valorar()}" /> 
                    <!--<h:commandButton value="Ver valoraciones"   styleClass="btnCambiar"  action="" />-->
                    <h:commandButton value="Volver Atrás"   styleClass="btnCancelar"  action="CRUDActividades.xhtml" />
                     <!-- Incluir un if para que solo se muestre este boton si ya se participa en la actv -->

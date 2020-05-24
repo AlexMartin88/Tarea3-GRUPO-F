@@ -38,7 +38,7 @@ public class valoracionController implements Serializable {
         //valoraciones = new ArrayList<>();
         //valoraciones.add(new ValoracionPublica(new Long (1), 7, "Buena actividad"));
         v = new ValoracionPublica();
-        actividadValoracion = new Actividad();
+        //actividadValoracion = new Actividad();
         a = new Actividad();
     }
 
@@ -48,6 +48,14 @@ public class valoracionController implements Serializable {
 
     public void setActividadValoracion(Actividad actividadValoracion) {
         this.actividadValoracion = actividadValoracion;
+    }
+
+    public Actividad getA() {
+        return a;
+    }
+
+    public void setA(Actividad a) {
+        this.a = a;
     }
     
     public String crear(Usuario u){
@@ -67,10 +75,10 @@ public class valoracionController implements Serializable {
         this.v = v;
     }
 
-    public String Valorar(Long cod){
-        actividadValoracion = a;
-        codActividad = cod;
-        actividadValoracion = bbdd.buscarActividad(codActividad);
+    public String Valorar(){
+        //actividadValoracion = a;
+       // codActividad = cod;
+        //actividadValoracion = bbdd.buscarActividad(codActividad);
         return "valoracionesPublicas.xhtml";
     }
     /*public void setValoraciones(List<ValoracionPublica> valoraciones) {
