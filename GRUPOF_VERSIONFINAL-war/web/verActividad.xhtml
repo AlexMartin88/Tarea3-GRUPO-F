@@ -10,62 +10,63 @@
         <c:choose>
             <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI' || controlAutorizacion.getUsuario().getRol() == 'PAS' || controlAutorizacion.getUsuario().getRol() == 'ALUMNO'}">
         
-                <h1 var = "i" value="#{ListaActividades.Actividades()}">Ver Actividad</h1>  
+                <h1>Ver Actividad</h1>  
                 <center>
                                 
                 <h:form id="ListaActividades">
                 
-                  
+                    <h:inputHidden value="#{ListaActividades.a.codActividad}"></h:inputHidden>
                     <table id="tablaListaActividades">
                         <tr>
                         <td>Código de Actividad</td>
-                        <td> <h:outputText value="#{i.codActividad}"/></td>
+                        <td> <h:outputText value="#{ListaActividades.a.codActividad}"/></td>
                         </tr>
                         <tr>
                             <td>Nombre Actividad </td>
 
-                            <td><h:outputText  value="#{i.nombreActividad}"/></td>
+                            <td><h:outputText  value="#{ListaActividades.a.nombreActividad}"/></td>
                         </tr>
 
                         <tr>
                             <td>Fecha Inicio </td>
-                            <td><h:outputText  value="#{i.fechaInicio}"/></td>
+                            <td><h:outputText  value="#{ListaActividades.a.fechaInicio}"/></td>
                         </tr>
                         
                         <tr>
                             <td>Fecha Fin </td>
-                            <td><h:outputText  value="#{i.fechaFin}"/></td>
+                            <td><h:outputText  value="#{ListaActividades.a.fechaFin}"/></td>
                         </tr>
 
                         <tr>
                             <td>Localización </td>
-                            <td><h:outputText  value="#{i.localizacion}"/></td>
+                            <td><h:outputText  value="#{ListaActividades.a.localizacion}"/></td>
                         </tr>
                         
                         <tr>
                             <td>Descripción </td>
-                            <td><h:outputText  value="#{i.descripcion}"/></td>
+                            <td><h:outputText  value="#{ListaActividades.a.descripcion}"/></td>
                         </tr>      
                      
                         <tr>
                             <td>Capacidades necesarias </td>
-                            <td><h:outputText  value="#{i.capacidadesNecesarias}"/></td>
+                            <td><h:outputText  value="#{ListaActividades.a.capacidadesNecesarias}"/></td>
                         </tr>  
                         
                         <tr>
                             <td>Tipo de actividad </td>
-                            <td><h:outputText  value="#{i.tipoActividad}"/></td>
+                            <td><h:outputText  value="#{ListaActividades.a.tipoActividad}"/></td>
                         </tr>  
                         
                         <tr>
                             <td>Estado de la actividad </td>
-                            <td><h:outputText  value="#{i.estadoActividad}"/></td>
+                            <td><h:outputText  value="#{ListaActividades.a.estadoActividad}"/></td>
                         </tr>
                                             
                         
                     </table>
                     <h:commandButton value="Petición de inscripción"  styleClass="btnOtro"  action="#{ListaActividades.peticionInscripcion(i, controlAutorizacion.usuario)}" /> 
-                     <h:commandButton value="Valorar Actividad"   styleClass="btnAceptar"  action="#{ValoracionesPublicas.Valorar(i.codActividad)}" /> 
+                    <h:commandButton value="Valorar Actividad"   styleClass="btnAceptar"  action="#{ValoracionesPublicas.Valorar(ListaActividades.a.codActividad)}" /> 
+                    <h:commandButton value="Valoraraciones de otros usuarios"   styleClass="btnCambiar"  action="#{ValoracionesPublicas.ValoracionesOtrosUsuarios(ListaActividades.a.codActividad)}" /> 
                    <!--<h:commandButton value="Ver valoraciones"   styleClass="btnCambiar"  action="" />-->
                    <h:commandButton value="Volver Atrás"   styleClass="btnCancelar"  action="CRUDActividades.xhtml" />
                     <!-- Incluir un if para que solo se muestre este boton si ya se participa en la actv -->

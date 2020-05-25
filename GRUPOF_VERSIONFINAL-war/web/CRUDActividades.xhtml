@@ -69,7 +69,7 @@
                                     <td>#{i.estadoActividad}</td> 
                                     <center>
                                     <td>
-                                        <h:form> <h:column> <h:commandButton styleClass="btnOtro" value ="Ver" action="#{ListaActividades.verActividad()}"  /></h:column></h:form>
+                                        <h:form> <h:column> <h:commandButton styleClass="btnOtro" value ="Ver" action="#{ListaActividades.verActividad(i.codActividad)}"  /></h:column></h:form>
                                     </td>
                                     <td>                                     
                                         <h:form> <h:column> <h:commandButton styleClass="btnAceptar" value="Modificar" action="#{ListaActividades.modificarActividad(i.codActividad)}" /> </h:column> </h:form>
@@ -152,7 +152,7 @@
                                     <td>#{i.estadoActividad}</td>          
                                     <td> 
                                         <center>
-                                        <h:form> <h:column> <h:commandButton styleClass="btnOtro" value="Ver" action="#{ListaActividades.verActividad()}"/> </h:column> </h:form>
+                                        <h:form> <h:column> <h:commandButton styleClass="btnOtro" value="Ver" action="#{ListaActividades.verActividad(i.codActividad)}"/> </h:column> </h:form>
                                         </center>
                                     </td>                                    
                                 </tr>

@@ -21,7 +21,7 @@ import javax.persistence.NamedQuery;
  */
 
 @NamedQueries({
-    @NamedQuery(name="modificarCodActividad",query="update ValoracionPublica v set v.act=:cod  where v.IDValoracion=:id")
+    @NamedQuery(name="valoraciones",query="select v from ValoracionPublica v where v.codActividad=:id")
         
 })
 @Entity

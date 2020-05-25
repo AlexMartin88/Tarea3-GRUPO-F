@@ -88,7 +88,9 @@ public class CRUDActividadesController implements Serializable{
        bbdd.modificarUsuario(u);
        return "verActividad.xhtml";  
    }
-    public String verActividad(){
+    public String verActividad(Long id){
+        codigo = id;
+        a = bbdd.buscarActividad(codigo);
         return "verActividad.xhtml";
      }
      

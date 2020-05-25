@@ -8,7 +8,6 @@ package backingBeans;
 import ejb.BaseDeDatosLocal;
 import entidades.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -54,8 +53,6 @@ public class valoracionController implements Serializable {
     public String crear(Usuario u){
         
         v.setCreador(u);
-         v.setCodActividad(codActividad);
-        //bbdd.aniadirValPub(v);
         bbdd.modificarValPub(v);
         return "CRUDActividades.xhtml";
     }
@@ -69,20 +66,21 @@ public class valoracionController implements Serializable {
     }
 
     public String Valorar(Long cod){
-       // Actividad a = bbdd.buscarActividad(codActividad);
-         //codActividad = cod;
-       //v.setCodActividad(codActividad);
       
-      bbdd.aniadirValPub(v);
+        codActividad = cod;
+        v.setCodActividad(cod);
+        bbdd.aniadirValPub(v);
        
        
         return "valoracionesPublicas.xhtml";
     }
-    /*public void setValoraciones(List<ValoracionPublica> valoraciones) {
-        this.valoraciones = valoraciones;
+    public String ValoracionesOtrosUsuarios(Long cod){
+           codActividad = cod;
+        a = bbdd.buscarActividad(codActividad);
+        return "ValoracionesOtrosUsuarios.xhtml";
     }
-
-    public List<ValoracionPublica> getValoraciones() {
-        return valoraciones;
-    }*/
+    public List<ValoracionPublica> valoraciones(){
+        return bbdd.todasValPublicas(codActividad);
+    }
+   
 }

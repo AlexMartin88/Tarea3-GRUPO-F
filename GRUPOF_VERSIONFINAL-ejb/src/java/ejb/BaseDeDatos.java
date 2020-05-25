@@ -265,8 +265,10 @@ public class BaseDeDatos implements BaseDeDatosLocal{
        return em.createNamedQuery("Participaciones", ParticipacionEnActividad.class).getResultList();
     }
     @Override
-    public List<ValoracionPublica> todasValPublicas(){
-        return em.createNamedQuery("ValoracionesPublicas", ValoracionPublica.class).getResultList();
+    public List<ValoracionPublica> todasValPublicas(Long cod){
+       Query q = em.createNamedQuery("valoraciones").setParameter("id", cod);
+       List<ValoracionPublica> valoraciones = q.getResultList();
+       return valoraciones;
     }
     @Override
     public List<ValoracionPrivada> todasValPrivadas(){

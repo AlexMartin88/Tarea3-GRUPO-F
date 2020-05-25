@@ -1,0 +1,56 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                >
+     <link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico"/>
+    <ui:define name="title">Valoraciones de otros usuarios</ui:define>
+    <ui:define name="content">
+        
+           <c:when  test="#{controlAutorizacion.getUsuario().getRol() == 'ALUMNO'  || controlAutorizacion.getUsuario().getRol() == 'PAS' || controlAutorizacion.getUsuario().getRol()=='PDI'}">
+                
+                      <h1>Valoraciones de otros usuarios</h1>
+                <center>
+                    
+                   
+          
+                <div class="bordeTablaActividades">
+                    <table id="tablaListaActividades">
+                        <thead>
+                                <tr> 
+                                    
+                                        <th>Nombre Acttividad</th>
+                                        <th>Calificacion</th>
+                                        <th>Comentarios</th>
+                                        <th>Email usuario que valoró</th>                             
+                                </tr>
+                            </thead>
+                        
+                        <tbody>
+                            <ui:repeat var = "i" value="#{ValoracionesPublicas.valoraciones()}">
+                                <tr>             
+                                 
+                                    <td>#{ValoracionesPublicas.a.nombreActividad}</td>
+                                    <td>#{i.calificacion}</td>
+                                    <td>#{i.comentariosUsuario}</td>
+                                    <td>#{i.creador.email}</td>
+                                   
+                                   
+                                </tr>
+                            </ui:repeat>
+                        </tbody>
+                    </table>
+                </div>
+                
+                                    <td>
+                                        <h:form> <h:column> <h:commandButton styleClass="btnOtro" value ="Volver a Lista de Actividades" action="CRUDActividades.xhtml"  /></h:column></h:form>
+                                    </td>
+                                    
+
+                                   
+                </center>
+            </c:when>
+            
+           </ui:define>
+</ui:composition>
