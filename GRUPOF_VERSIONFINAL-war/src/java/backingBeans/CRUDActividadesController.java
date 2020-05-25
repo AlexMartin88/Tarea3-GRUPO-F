@@ -49,6 +49,18 @@ public class CRUDActividadesController implements Serializable{
        
     }
   
+    public String EvaluarUser(Long cod){
+        codigo = cod;
+        //participacion = bbdd.bus
+        return "evaluaciones.xhtml";
+    }
+    public List<ParticipacionEnActividad> getParticipantes(){
+        return bbdd.buscarActividad(codigo).getParticipantes();
+    }
+    public String modificaEvaluacion(ParticipacionEnActividad p){
+        bbdd.modificarParticipacion(p);
+        return "CRUDActividades.xhtml";
+    }
     public List<Actividad> Actividades(){
         return bbdd.todasActividades();
     }
@@ -124,7 +136,9 @@ public class CRUDActividadesController implements Serializable{
        
         return "gestionarSolicitud.xhtml";
     }
-    
+    public String getNombreOrganizacion(Long cod){
+        return bbdd.buscarONG(cod).getNombreONG();
+    }
     public String modificarSolicitud(){
         
        bbdd.modificarActividad(a);

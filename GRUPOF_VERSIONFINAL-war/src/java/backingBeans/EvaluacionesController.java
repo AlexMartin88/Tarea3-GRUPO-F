@@ -18,8 +18,14 @@ package backingBeans;
 
 
 import ejb.BaseDeDatosLocal;
+import entidades.Actividad;
+import entidades.ParticipacionEnActividad;
+import entidades.Usuario;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 /**
@@ -34,7 +40,7 @@ public class EvaluacionesController implements Serializable {
     @Inject 
     private BaseDeDatosLocal bbdd;
     
-    /*private ArrayList<ParticipacionEnActividad> participaciones;
+    private ArrayList<ParticipacionEnActividad> participaciones;
     private ArrayList<ParticipacionEnActividad> participacionesValorar;
     private ArrayList<Usuario> usuarios;
     private Usuario usuario;
@@ -57,7 +63,7 @@ public class EvaluacionesController implements Serializable {
         this.actividad = actividad;
     }
     
-    public EvaluacionesController() throws ParseException {
+    public EvaluacionesController(){
         usuarios = new ArrayList<>();
         usuarios.add(new Usuario("Alberto","Aguilera","1234567U","aguil@uma.es"));
          usuarios.add(new Usuario("Paco","Martinez","1872237U","pam@uma.es"));
@@ -67,12 +73,12 @@ public class EvaluacionesController implements Serializable {
         participacionesValorar = new ArrayList<>();
         SimpleDateFormat dateformat3 = new SimpleDateFormat("dd/MM/yyyy");
        
-        participaciones.add(new ParticipacionEnActividad(new Long(1),dateformat3.parse("21/11/2020"), 8 , "Perfe", 16, "Todo perfe","Evaluado"));
-        participaciones.add(new ParticipacionEnActividad(new Long(2),dateformat3.parse("22/11/2020"), 7 , "Correcto", 15, "Todo bien","Evaluado"));
-        participaciones.add(new ParticipacionEnActividad(new Long(3),dateformat3.parse("23/11/2020"), 6 , "Bien", 13, "Todo perfe","Evaluado"));
-        participaciones.add(new ParticipacionEnActividad(new Long(4),dateformat3.parse("24/11/2020"), 9 , "Excelente", 18, "Todo perfe","Evaluado"));
-        participaciones.add(new ParticipacionEnActividad(new Long(5),dateformat3.parse("25/11/2020"), 0 , " ", 0, "","No evaluado"));
-        p = new ParticipacionEnActividad(new Long(5),dateformat3.parse("25/11/2020"), 0 , " ", 0, "","No evaluado");
+        participaciones.add(new ParticipacionEnActividad(new Long(1),"21/11/2020", 8 , "Perfe", 16, "Todo perfe","Evaluado"));
+        participaciones.add(new ParticipacionEnActividad(new Long(2),"22/11/2020", 7 , "Correcto", 15, "Todo bien","Evaluado"));
+        participaciones.add(new ParticipacionEnActividad(new Long(3),"23/11/2020", 6 , "Bien", 13, "Todo perfe","Evaluado"));
+        participaciones.add(new ParticipacionEnActividad(new Long(4),"24/11/2020", 9 , "Excelente", 18, "Todo perfe","Evaluado"));
+        participaciones.add(new ParticipacionEnActividad(new Long(5),"25/11/2020", 0 , " ", 0, "","No evaluado"));
+        p = new ParticipacionEnActividad(new Long(5),"25/11/2020", 0 , " ", 0, "","No evaluado");
     }
 
     public ArrayList<Usuario> getUsuarios() {
@@ -114,6 +120,6 @@ public class EvaluacionesController implements Serializable {
     public void setP(ParticipacionEnActividad p) {
         this.p = p;
     }
-     */
+     
      
 }

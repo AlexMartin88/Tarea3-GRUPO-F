@@ -31,6 +31,7 @@ public class controlAutorizacion implements Serializable {
     private Usuario usuario;
       
     private Organizacion ong;
+  
 
     public Organizacion getOng() {
         return ong;
@@ -101,9 +102,6 @@ public class controlAutorizacion implements Serializable {
         return "CRUDActividades.xhtml";
     }
     
-    public String EvaluarUser(){
-        return "evaluaciones.xhtml";
-    }
     public String Propuesta(){
         return "crearPropuestaAct.xhtml";
     }

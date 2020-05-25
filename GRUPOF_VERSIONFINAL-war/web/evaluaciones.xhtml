@@ -9,10 +9,14 @@
     <ui:define name="content">
         <c:choose>
             <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI'}">
-                <h1>EVALUACIONES</h1>
+                <h1 var = "i" value="#{ListaActividades.getParticipantes()}">EVALUACIONES</h1>
                 <center>
+                 
                     
-                    
+                    <form>
+                        
+                          <h:inputHidden value="#{i.IDParticipacion}"></h:inputHidden>
+                  
                 <div class="bordeTablaActividades">
                     <table id="tablaListaActividades">
                         <thead>
@@ -23,12 +27,13 @@
                                         <th>Comentarios</th>
                                         <th>Horas dedicadas</th>
                                         <th>Observaciones</th>
-                                        <th>Estado</th>                         
+                                        <th>Estado</th>
+                                        <th>Nueva nota</th>
                                 </tr>
                             </thead>
                         
                         <tbody>
-                            <ui:repeat var = "i" value="#{Evaluaciones.participaciones}">
+                            <ui:repeat var = "i" value="#{ListaActividades.getParticipantes()}">
                                 <tr>                                
                                     <td>#{i.IDParticipacion}</td>
                                     <td>#{i.fecha}</td>
@@ -37,10 +42,12 @@
                                     <td>#{i.horasDedicadas}</td>
                                     <td>#{i.observaciones}</td>
                                     <td>#{i.estado}</td>
+                                    <td><h:inputText value="#{i.nota}"></h:inputText></td>
                                     <td>
-                                        <center>
-                                        <h:form> <h:column> <h:commandButton styleClass="email2" value ="Evaluar" action="evaluacion.xhtml"/></h:column></h:form>
-                                        </center>
+                                      
+                                            
+                                        <h:commandButton styleClass="email2" value ="Evaluar" action="#{ListaActividades.modificaEvaluacion(i)}"/>
+                                     
                                         
                                     </td>             
                                 </tr>
@@ -48,6 +55,7 @@
                         </tbody>
                     </table>
                 </div>
+                            </form>
                 </center>
             </c:when>
             <c:otherwise>

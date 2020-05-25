@@ -13,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
@@ -20,7 +22,12 @@ import javax.persistence.Temporal;
  * SII
  * 3ºA Ingeniería Informática 
  * @author GRUPOF
- */
+ */@NamedQueries({
+    @NamedQuery(name="findAllActividades",query="select a from Actividad a where a.EstadoSolicitud=:estado"),
+   
+   
+    
+})
 @Entity
 public class ParticipacionEnActividad implements Serializable {
 

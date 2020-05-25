@@ -57,6 +57,7 @@ public interface BaseDeDatosLocal {
     public void modificarNoticia(Noticia n);
     public void modificarPAS(PAS pas);
     public void modificarValPub(ValoracionPublica v);
+    public void modificarParticipacion(ParticipacionEnActividad p);
     
     //----Métodos para eliminar en la base de datos----//
     public void eliminarActividad(Long n);

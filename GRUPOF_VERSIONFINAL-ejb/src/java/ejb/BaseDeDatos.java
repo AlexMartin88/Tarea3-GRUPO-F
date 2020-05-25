@@ -328,6 +328,11 @@ public class BaseDeDatos implements BaseDeDatosLocal{
         em.persist(em.merge(v));
     }
 
+    @Override
+    public void modificarParticipacion(ParticipacionEnActividad p) {
+      em.persist(em.merge(p));
+    }
+
    
 
     
