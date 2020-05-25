@@ -105,6 +105,7 @@ public class BaseDeDatos implements BaseDeDatosLocal{
     public void modificarPAS(PAS pas){
         
     }
+    
     @Override
     public void eliminarMensaje(Long n){
         Mensaje m = buscarMensaje(n);
@@ -190,8 +191,10 @@ public class BaseDeDatos implements BaseDeDatosLocal{
         
     }
     @Override
-    public void buscarParticipante(ParticipacionEnActividad participacion){
+    public ParticipacionEnActividad buscarParticipante(Long id){
         
+        ParticipacionEnActividad p = em.find(ParticipacionEnActividad.class, id);
+        return p;
     }
     @Override
     public Mensaje buscarMensaje(Long n){

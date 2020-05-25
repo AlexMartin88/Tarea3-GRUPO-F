@@ -6,7 +6,7 @@
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
       <property name="javax.persistence.schema-generation.scripts.create-target" value="DDL.sql"/>
-      <property name="javax.persistence.sql-load-script-source" value="resources/data.sql"/>
+      <property name="javax.persistence.sql-load-script-source" value="resources\data.sql"/>
     </properties>
   </persistence-unit>
 </persistence>

@@ -8,7 +8,7 @@
     <ui:define name="title">Ver actividad</ui:define>
     <ui:define name="content">
         <c:choose>
-            <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI' || controlAutorizacion.getUsuario().getRol() == 'PAS' || controlAutorizacion.getUsuario().getRol() == 'ALUMNO'}">
+            <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI'}">
          <center>
                 <h1>Ver Actividad</h1>  
                
@@ -67,12 +67,11 @@
                     <h:commandButton value="Petición de inscripción"  styleClass="btnOtro"  action="#{ListaActividades.peticionInscripcion(i, controlAutorizacion.usuario)}" /> 
                     <h:commandButton value="Valorar Actividad"   styleClass="btnAceptar"  action="#{ValoracionesPublicas.Valorar(ListaActividades.a.codActividad)}" /> 
                     <h:commandButton value="Valoraraciones de otros usuarios"   styleClass="btnCambiar"  action="#{ValoracionesPublicas.ValoracionesOtrosUsuarios(ListaActividades.a.codActividad)}" /> 
-                      <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI'}">
+                     
                     
                           <h:commandButton value="Evaluar usuario"   styleClass="btnCambiar"  action="#{ListaActividades.EvaluarUser(ListaActividades.a.codActividad)}" />
                 
                 
-                      </c:when>
                        <h:commandButton value="Volver Atrás"   styleClass="btnCancelar"  action="CRUDActividades.xhtml" />
                 </h:form>
                 
@@ -80,7 +79,77 @@
                
                  
             </c:when>
-           
+               <c:when test="#{ controlAutorizacion.getUsuario().getRol() == 'PAS' || controlAutorizacion.getUsuario().getRol() == 'ALUMNO'}">
+         <center>
+                <h1>Ver Actividad</h1>  
+               
+                                
+                <h:form id="ListaActividades">
+                
+                    <h:inputHidden value="#{ListaActividades.a.codActividad}"></h:inputHidden>
+                    <table id="tablaListaActividades">
+                        <tr>
+                        <td>Código de Actividad</td>
+                        <td> <h:outputText value="#{ListaActividades.a.codActividad}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Nombre Actividad </td>
+
+                            <td><h:outputText  value="#{ListaActividades.a.nombreActividad}"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>Fecha Inicio </td>
+                            <td><h:outputText  value="#{ListaActividades.a.fechaInicio}"/></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Fecha Fin </td>
+                            <td><h:outputText  value="#{ListaActividades.a.fechaFin}"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>Localización </td>
+                            <td><h:outputText  value="#{ListaActividades.a.localizacion}"/></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Descripción </td>
+                            <td><h:outputText  value="#{ListaActividades.a.descripcion}"/></td>
+                        </tr>      
+                     
+                        <tr>
+                            <td>Capacidades necesarias </td>
+                            <td><h:outputText  value="#{ListaActividades.a.capacidadesNecesarias}"/></td>
+                        </tr>  
+                        
+                        <tr>
+                            <td>Tipo de actividad </td>
+                            <td><h:outputText  value="#{ListaActividades.a.tipoActividad}"/></td>
+                        </tr>  
+                        
+                        <tr>
+                            <td>Estado de la actividad </td>
+                            <td><h:outputText  value="#{ListaActividades.a.estadoActividad}"/></td>
+                        </tr>
+                                            
+                        
+                    </table>
+                    <h:commandButton value="Petición de inscripción"  styleClass="btnOtro"  action="#{ListaActividades.peticionInscripcion(i, controlAutorizacion.usuario)}" /> 
+                    <h:commandButton value="Valorar Actividad"   styleClass="btnAceptar"  action="#{ValoracionesPublicas.Valorar(ListaActividades.a.codActividad)}" /> 
+                    <h:commandButton value="Valoraraciones de otros usuarios"   styleClass="btnCambiar"  action="#{ValoracionesPublicas.ValoracionesOtrosUsuarios(ListaActividades.a.codActividad)}" /> 
+                     
+                    
+                         
+                
+                
+                       <h:commandButton value="Volver Atrás"   styleClass="btnCancelar"  action="CRUDActividades.xhtml" />
+                </h:form>
+                
+                  </center>
+               
+                 
+            </c:when>
        
             <c:otherwise>
                 <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>

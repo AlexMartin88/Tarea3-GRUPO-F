@@ -3,7 +3,8 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-                >
+                    
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
      <link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico"/>
     <ui:define name="title">Actividades</ui:define>
     <ui:define name="content">
@@ -12,27 +13,44 @@
             <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI'}">
                 <h1>LISTA ACTIVIDADES</h1>
           <center>
-                         
+                     
+               
+               
+                <h:form id="tablaListaActividades" >    
                       <div>  
-                          
-                                 <tr>
-                          <td>Tipo de Actividad <h:inputText value="" class="email"/></td>
-                      </tr>
+                          <tr>
+                            <td>Tipo de actividad</td>
+                            <td>
+                                 <h:selectOneMenu  value="#{ListaActividades.a.tipoActividad}"  class="email" >
+                                    
+                                    <f:selectItem itemValue="VOLUNTARIADO" itemLabel="VOLUNTARIADO"  />
+                                    <f:selectItem itemValue="FORMACION" itemLabel="FORMACION"  />
+                                  
+                                  
+                                    
+                                </h:selectOneMenu>
+                                
+                                
+                            </td>
+                        </tr>  
+                        
                 <tr>
-                    <td>Fecha Inicio <h:inputText value="" class="email"/></td>
+                    <td>Fecha Inicio <h:inputText value="#{ListaActividades.a.fechaInicio}" class="email"/></td>
                       </tr>
                       <tr>
-                          <td>Localizacion <h:inputText value="" class="email"/></td>
+                          <td>Localizacion <h:inputText value="#{ListaActividades.a.localizacion}" class="email"/></td>
                       </tr>
                         <tr>
-                          <td>Capacidades necesarias <h:inputText value="" class="email"/></td>
+                            <td>Capacidades necesarias <h:inputText value="#{ListaActividades.a.capacidadesNecesarias}" class="email"/></td>
                       </tr>
                           <tr>
-                              <h:commandButton class="btnOtro" value="Buscar" action="#"/>
+                              <h:commandButton class="btnOtro" value="Buscar" action="#{ListaActividades.buscarActividad()}"/>
                           </tr>
                       </div>
                      
-                      </center>
+                    
+</h:form>
+                </center>
                 <center>
                     
                    

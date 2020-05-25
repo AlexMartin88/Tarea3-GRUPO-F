@@ -10,62 +10,57 @@
         <c:choose>
             <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI'}">
         
-                <h1 var = "i" value="#{Evaluaciones.participaciones}">Evaluar</h1>              
+                <h1>Evaluar</h1>              
                 <center>
                   
                 <h:form id="Evaluacion">
+                    <h:inputHidden value="#{ListaActividades.participacion.IDParticipacion}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.participacion.participaciones}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.participacion.horasDedicadas}"></h:inputHidden>
                     <table id="tablaListaActividades">
                         
                         <tr>
-                            <td>ID Participacion: </td>
+                            <td>ID Participacion </td>
 
-                            <td><h:outputText  value="#{i.IDParticipacion}"/></td>
-                        </tr>
-                             <tr>
-                            <td>Fecha: </td>
-
-                            <td><h:outputText  value="#{i.fecha}"/></td>
-                        </tr>
-                             <tr>
-                            <td>Nota: </td>
-
-                            <td><h:inputText  value="#{i.nota}"/></td>
+                            <td><h:outputText  value="#{ListaActividades.participacion.IDParticipacion}"/></td>
                         </tr>
                          <tr>
-                            <td>Comentarios: </td>
+                            <td>Nombre </td>
 
-                            <td><h:outputText  value="#{i.comentariosNota}"/></td>
+                            <td><h:outputText  value="#{ListaActividades.participacion.participaciones.nombre}"/></td>
                         </tr>
-                             <tr>
-                            <td>Horas dedicadas: </td>
+                         <tr>
+                            <td>Apellidos </td>
 
-                            <td><h:outputText  value="#{i.horasDedicadas}"/></td>
+                            <td><h:outputText  value="#{ListaActividades.participacion.participaciones.apellidos}"/></td>
+                        </tr>
+                        
+                               <tr>
+                            <td>Horas dedicadas </td>
+
+                            <td><h:outputText  value="#{ListaActividades.participacion.horasDedicadas}"/></td>
                         </tr>
                              
-                        
-                        <tr>
-                            <td>Observaciones: </td>
+                             <tr>
+                                 
+                                 
+                            <td>Nota </td>
 
-                            <td><h:outputText  value="#{i.observaciones}"/></td>
+                            <td><h:inputText  value="#{ListaActividades.participacion.nota}"/></td>
                         </tr>
-                        <tr>
-                            <td>Estado: </td>
+                         <tr>
+                            <td>Comentarios </td>
 
-                            <td><h:outputText  value="#{i.estado}"/></td>
+                            <td><h:inputText  value="#{ListaActividades.participacion.comentariosNota}"/></td>
                         </tr>
+                        <h:commandButton value="Evaluar"  styleClass="btnAceptar"  action="#{ListaActividades.modificaEvaluacion()}" /> 
+                  <!--  <h:commandButton value="Volver Atrás"   styleClass="btnCancelar"  action="#{ListaActividades.EvaluarUser(ListaActividades.participacion.participantes.codActividad)}" /> --> 
                        
                     </table>
                 </h:form>
                       
                 </center>
-                <h:form> 
-                  <br/>
-                  <center>
-                  <h:column> <h:commandButton value="Evaluar"  styleClass="btnAceptar"  action="#{controlAutorizacion.EvaluarUser()}" /> </h:column> 
-                  <h:column> <h:commandButton value="Volver Atrás"   styleClass="btnCancelar"  action="#{controlAutorizacion.EvaluarUser()}" /> </h:column> 
-                  </center>
-
-                </h:form>
+         
             </c:when>
             <c:otherwise>
                 <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>

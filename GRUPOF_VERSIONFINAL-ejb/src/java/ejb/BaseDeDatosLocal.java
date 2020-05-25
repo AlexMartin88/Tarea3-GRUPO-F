@@ -70,6 +70,7 @@ public interface BaseDeDatosLocal {
     public void eliminarPAS(PAS pas);
     public void eliminarAsignatura(Asignatura asig);
     public void eliminarMensaje(Long n);
+    
     //----Métodos de búsqueda en la base de datos----// //NO SE SI SON NECESARIOS ESTOS METODOS, EL DE ACTIVIDAD QUIZAS SI PERO PASANDOLE LOS PARAMETROS DEL MATCHING.
     public Actividad buscarActividad(Long n);
     public Usuario buscarUsuario(Long usr);
@@ -78,7 +79,7 @@ public interface BaseDeDatosLocal {
     public void buscarAlumno(Alumno al);
     public void buscarValPub(ValoracionPublica valPub);
     public void buscarValPriv(ValoracionPrivada valPriv);
-    public void buscarParticipante(ParticipacionEnActividad participacion);
+    public ParticipacionEnActividad buscarParticipante(Long  id);
     public Mensaje buscarMensaje(Long m);
     public Noticia buscarNoticia(Long codNoticia);
     public void compruebaLogin(Usuario u) throws ApSException;

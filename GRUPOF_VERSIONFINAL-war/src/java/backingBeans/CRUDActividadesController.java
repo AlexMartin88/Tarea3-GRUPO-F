@@ -28,6 +28,7 @@ public class CRUDActividadesController implements Serializable{
     private ParticipacionEnActividad participacion;
     private Actividad a; 
    private Long codigo;
+   private Long idParticipacion;
    private Organizacion o;
    //private Long c = o.getUserID();
    
@@ -45,20 +46,36 @@ public class CRUDActividadesController implements Serializable{
     public CRUDActividadesController(){
         a = new Actividad(); 
        // ong = new Organizacion();
+       participacion = new ParticipacionEnActividad();
        
        
     }
   
     public String EvaluarUser(Long cod){
         codigo = cod;
-        //participacion = bbdd.bus
+      
         return "evaluaciones.xhtml";
     }
     public List<ParticipacionEnActividad> getParticipantes(){
         return bbdd.buscarActividad(codigo).getParticipantes();
     }
-    public String modificaEvaluacion(ParticipacionEnActividad p){
-        bbdd.modificarParticipacion(p);
+    public String verEvaluarUsuario(Long id){
+       idParticipacion = id;
+        participacion = bbdd.buscarParticipante(idParticipacion);
+        return "evaluacion.xhtml";
+    }
+
+    public ParticipacionEnActividad getParticipacion() {
+        return participacion;
+    }
+
+    public void setParticipacion(ParticipacionEnActividad participacion) {
+        this.participacion = participacion;
+    }
+  
+    
+    public String modificaEvaluacion(){
+        bbdd.modificarParticipacion(participacion);
         return "CRUDActividades.xhtml";
     }
     public List<Actividad> Actividades(){
@@ -85,6 +102,13 @@ public class CRUDActividadesController implements Serializable{
         bbdd.aniadirActividad(a);        
        
         return "ActividadesONG.xhtml";
+    }
+    public List<Actividad> buscarActividad(){
+        if(bbdd.todasActividades().contains(a)==true){
+             return bbdd.todasActividades();
+        }
+        return null;
+       
     }
     
   /*  public String modificarActividad(){

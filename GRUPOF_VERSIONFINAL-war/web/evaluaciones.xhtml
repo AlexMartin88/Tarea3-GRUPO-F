@@ -9,53 +9,52 @@
     <ui:define name="content">
         <c:choose>
             <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI'}">
-                <h1 var = "i" value="#{ListaActividades.getParticipantes()}">EVALUACIONES</h1>
+                <h1>EVALUACIONES</h1>
                 <center>
                  
                     
-                    <form>
-                        
-                          <h:inputHidden value="#{i.IDParticipacion}"></h:inputHidden>
                   
                 <div class="bordeTablaActividades">
                     <table id="tablaListaActividades">
                         <thead>
                                 <tr>
                                         <th>Id Participacion</th>
-                                        <th>Fecha</th>
-                                        <th>Nota</th>
-                                        <th>Comentarios</th>
+                                        <th>Nombre</th>
+                                        <th>Apellidos</th>
                                         <th>Horas dedicadas</th>
-                                        <th>Observaciones</th>
-                                        <th>Estado</th>
-                                        <th>Nueva nota</th>
+                                        
+                                       
+                                      
                                 </tr>
                             </thead>
                         
                         <tbody>
-                            <ui:repeat var = "i" value="#{ListaActividades.getParticipantes()}">
+                            <ui:repeat var = "i" value="#{ListaActividades.participantes}">
                                 <tr>                                
                                     <td>#{i.IDParticipacion}</td>
-                                    <td>#{i.fecha}</td>
-                                    <td>#{i.nota}</td>
-                                    <td>#{i.comentariosNota}</td>
+                                    <td>#{i.participaciones.nombre}</td>
+                                    <td>#{i.participaciones.apellidos}</td>
                                     <td>#{i.horasDedicadas}</td>
-                                    <td>#{i.observaciones}</td>
-                                    <td>#{i.estado}</td>
-                                    <td><h:inputText value="#{i.nota}"></h:inputText></td>
+                                    
+                                    <center>
+                                    
                                     <td>
-                                      
-                                            
-                                        <h:commandButton styleClass="email2" value ="Evaluar" action="#{ListaActividades.modificaEvaluacion(i)}"/>
-                                     
+                                        <h:form> <h:column><h:commandButton styleClass="email2" value ="Evaluar" action="#{ListaActividades.verEvaluarUsuario(i.IDParticipacion)}"/> </h:column> </h:form>
+                  
+                                    </td>
+                                    <td>
+                                        <h:form><h:column><h:commandButton styleClass="btnCambiar" value ="Volver a la lista de actividades" action="CRUDActividades.xhtml"/></h:column></h:form>
+                                                
                                         
-                                    </td>             
+                                    </td>    
+                                    </center>
                                 </tr>
                             </ui:repeat>
                         </tbody>
                     </table>
                 </div>
-                            </form>
+                      
+                   
                 </center>
             </c:when>
             <c:otherwise>
