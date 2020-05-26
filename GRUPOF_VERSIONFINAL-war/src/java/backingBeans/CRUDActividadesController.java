@@ -32,6 +32,7 @@ public class CRUDActividadesController implements Serializable{
    private Long idParticipacion;
    private Organizacion o;
    private List<ParticipacionEnActividad> participantes;
+   private List<ParticipacionEnActividad> participantesONG;
    private Usuario u;
    //private Long c = o.getUserID();
    
@@ -51,12 +52,28 @@ public class CRUDActividadesController implements Serializable{
        // ong = new Organizacion();
        participacion = new ParticipacionEnActividad();
        participantes = new ArrayList<>();
+         participantesONG = new ArrayList<>();
        
        
     }
+
+    public List<ParticipacionEnActividad> getParticipantesONG() {
+        return participantesONG;
+    }
+
+    public void setParticipantesONG(List<ParticipacionEnActividad> participantesONG) {
+        this.participantesONG = participantesONG;
+    }
+    
     public String participantesONG(Long cod){
         //codigo = cod;
         participantes = bbdd.buscarActividad(cod).getParticipantes();
+        for (ParticipacionEnActividad p : participantes) {
+            if(p.getEstado().equalsIgnoreCase("ACEPTADA")){
+            participantesONG.add(p);
+        }
+            
+        }
         return "participantesActividadONG.xhtml";
     }
     public String EvaluarUser(Long cod){

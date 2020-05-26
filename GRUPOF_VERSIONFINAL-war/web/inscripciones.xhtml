@@ -10,9 +10,11 @@
         <c:choose>
             <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI' }">
                 <h1>INSCRIPCIONES</h1>
+                
+                    
                 <center>
                     
-                    
+               
                 <div class="bordeTablaActividades">
                     <table id="tablaListaActividades">
                         <thead>
@@ -26,7 +28,7 @@
                             </thead>
                         
                         <tbody>
-                            <ui:repeat var = "i" value="#{ListaActividades.participantes}">
+                            <ui:repeat var = "i" value="#{ListaActividades.getParticipantes()}">
                                 <tr>                                
                                     <td>#{i.IDParticipacion}</td>
                                     <td>#{i.fecha}</td>
@@ -51,7 +53,7 @@
                         </tbody>
                     </table>
                 </div>
-                </center>
+                 </center>
                 <center>
                       <h:form> <h:column> <h:commandButton styleClass="btnOtro" value ="Volver atrás" action="CRUDActividades.xhtml" /></h:column></h:form>
                 </center>

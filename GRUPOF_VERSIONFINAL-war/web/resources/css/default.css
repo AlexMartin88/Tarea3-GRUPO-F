@@ -80,6 +80,24 @@ body{
   
 }
 
+.btnotrosUsers{
+
+    margin: 20px;
+    border-radius: 10px;
+    background-color: coral;
+    color:white;
+  
+}
+
+.btnotros{
+
+    margin: 20px;
+    border-radius: 10px;
+    background-color: darkorchid;
+    color:white;
+  
+}
+
 .btnAceptar{
     margin: 20px;
     border-radius: 10px;
