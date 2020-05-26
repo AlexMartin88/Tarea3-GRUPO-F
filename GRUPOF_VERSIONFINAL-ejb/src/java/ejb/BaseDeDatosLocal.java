@@ -28,6 +28,7 @@ public interface BaseDeDatosLocal {
     List<PAS> todosPAS();
     List<PDI> todosPDI();
     List<ParticipacionEnActividad> todasParticipaciones();
+    List<ParticipacionEnActividad> buscarPorEstado(String e,Actividad a);
     List<ValoracionPublica> todasValPublicas(Long cod);
     List<ValoracionPrivada> todasValPrivadas();
     List<Actividad> todasGestionesSolicitudes();

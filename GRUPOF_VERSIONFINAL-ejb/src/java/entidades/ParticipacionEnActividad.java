@@ -23,7 +23,7 @@ import javax.persistence.Temporal;
  * 3ºA Ingeniería Informática 
  * @author GRUPOF
  */@NamedQueries({
-    @NamedQuery(name="findAllActividades",query="select a from Actividad a where a.EstadoSolicitud=:estado"),
+    @NamedQuery(name="buscarporEstado",query="select p from ParticipacionEnActividad p where p.Estado=:estado and p.participantes=:actividad" ),
    
    
     

@@ -10,35 +10,35 @@
         <c:choose>
             <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI'}">
         
-                <h1>Evaluar</h1>              
+                <h1 var = "i" value="#{ListaActividades.getParticipanteAct()}">Evaluar</h1>              
                 <center>
                   
                 <h:form id="Evaluacion">
                     <h:inputHidden value="#{ListaActividades.participacion.IDParticipacion}"></h:inputHidden>
-                    <h:inputHidden value="#{ListaActividades.participacion.participaciones}"></h:inputHidden>
+                 <!--   <h:inputHidden value="#{ListaActividades.participacion.participaciones}"></h:inputHidden>-->
                     <h:inputHidden value="#{ListaActividades.participacion.horasDedicadas}"></h:inputHidden>
                     <table id="tablaListaActividades">
                         
                         <tr>
                             <td>ID Participacion </td>
 
-                            <td><h:outputText  value="#{ListaActividades.participacion.IDParticipacion}"/></td>
+                            <td><h:outputText  value="#{i.IDParticipacion}"/></td>
                         </tr>
                          <tr>
                             <td>Nombre </td>
 
-                            <td><h:outputText  value="#{ListaActividades.participacion.participaciones.nombre}"/></td>
+                            <td><h:outputText  value="#{ListaActividades.u.nombre}"/></td>
                         </tr>
                          <tr>
                             <td>Apellidos </td>
 
-                            <td><h:outputText  value="#{ListaActividades.participacion.participaciones.apellidos}"/></td>
+                            <td><h:outputText  value="#{ListaActividades.u.apellidos}"/></td>
                         </tr>
                         
                                <tr>
                             <td>Horas dedicadas </td>
 
-                            <td><h:outputText  value="#{ListaActividades.participacion.horasDedicadas}"/></td>
+                            <td><h:outputText  value="#{i.horasDedicadas}"/></td>
                         </tr>
                              
                              <tr>
@@ -46,17 +46,18 @@
                                  
                             <td>Nota </td>
 
-                            <td><h:inputText  value="#{ListaActividades.participacion.nota}"/></td>
+                            <td><h:inputText  value="#{i.nota}"/></td>
                         </tr>
                          <tr>
                             <td>Comentarios </td>
 
-                            <td><h:inputText  value="#{ListaActividades.participacion.comentariosNota}"/></td>
+                            <td><h:inputText  value="#{i.comentariosNota}"/></td>
                         </tr>
-                        <h:commandButton value="Evaluar"  styleClass="btnAceptar"  action="#{ListaActividades.modificaEvaluacion()}" /> 
-                  <!--  <h:commandButton value="Volver Atrás"   styleClass="btnCancelar"  action="#{ListaActividades.EvaluarUser(ListaActividades.participacion.participantes.codActividad)}" /> --> 
+                 
                        
                     </table>
+                           <h:commandButton value="Evaluar"  styleClass="btnAceptar"  action="#{ListaActividades.modificaEvaluacion()}" /> 
+                  <!--  <h:commandButton value="Volver Atrás"   styleClass="btnCancelar"  action="#{ListaActividades.EvaluarUser(ListaActividades.participacion.participantes.codActividad)}" /> --> 
                 </h:form>
                       
                 </center>

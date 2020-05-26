@@ -8,6 +8,7 @@ package backingBeans;
 import entidades.*;
 import ejb.BaseDeDatosLocal;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -30,6 +31,8 @@ public class CRUDActividadesController implements Serializable{
    private Long codigo;
    private Long idParticipacion;
    private Organizacion o;
+   private List<ParticipacionEnActividad> participantes;
+   private Usuario u;
    //private Long c = o.getUserID();
    
  
@@ -47,24 +50,34 @@ public class CRUDActividadesController implements Serializable{
         a = new Actividad(); 
        // ong = new Organizacion();
        participacion = new ParticipacionEnActividad();
+       participantes = new ArrayList<>();
        
        
     }
-  
+    public String participantesONG(Long cod){
+        //codigo = cod;
+        participantes = bbdd.buscarActividad(cod).getParticipantes();
+        return "participantesActividadONG.xhtml";
+    }
     public String EvaluarUser(Long cod){
-        codigo = cod;
-      
+        //codigo = cod;
+      participantes = bbdd.buscarActividad(cod).getParticipantes();
         return "evaluaciones.xhtml";
     }
     public List<ParticipacionEnActividad> getParticipantes(){
-        return bbdd.buscarActividad(codigo).getParticipantes();
+       // bbdd.buscarActividad(codigo).getParticipantes();
+        return participantes;
     }
     public String verEvaluarUsuario(Long id){
-       idParticipacion = id;
-        participacion = bbdd.buscarParticipante(idParticipacion);
+      idParticipacion = id;
+       // participacion = bbdd.buscarParticipante();
+       
         return "evaluacion.xhtml";
     }
-
+public ParticipacionEnActividad getParticipanteAct(){
+    u = bbdd.buscarParticipante(idParticipacion).getParticipaciones();
+    return bbdd.buscarParticipante(idParticipacion);
+}
     public ParticipacionEnActividad getParticipacion() {
         return participacion;
     }
@@ -86,11 +99,16 @@ public class CRUDActividadesController implements Serializable{
         return bbdd.todasActividadesONG(id-1);
     }
 
+  
     public String borrarActividad(Long cod){
         bbdd.eliminarActividad(cod);
         return "CRUDActividades.xhtml";
     }
-    public String inscripciones(){
+    public String inscripciones(Long id){
+         a = bbdd.buscarActividad(id);
+         
+         participantes = bbdd.buscarPorEstado("PENDIENTE", a);
+        
         return "inscripciones.xhtml"; 
     }
 
@@ -111,18 +129,16 @@ public class CRUDActividadesController implements Serializable{
        
     }
     
-  /*  public String modificarActividad(){
-        return "modificarActividad.xhtml";
-    }*/
- 
-   public String peticionInscripcion(Usuario u,Actividad a){
+  
+    
+   public String peticionInscripcion(Usuario u){
        participacion = new ParticipacionEnActividad("1/05/2009","PENDIENTE",a,u);
        bbdd.aniadirParticipante(participacion);
        a.anadirParticipacionLista(participacion);
        bbdd.modificarActividad(a);
        u.anadirParticipacionLista(participacion);
        bbdd.modificarUsuario(u);
-       return "verActividad.xhtml";  
+       return "CRUDActividades.xhtml";  
    }
     public String verActividad(Long id){
         codigo = id;
@@ -160,6 +176,12 @@ public class CRUDActividadesController implements Serializable{
        
         return "gestionarSolicitud.xhtml";
     }
+       public String gestionarInscripcion(Long cod){
+        
+        participacion = bbdd.buscarParticipante(cod);
+       
+        return "gestionarInscripcion.xhtml";
+    }
     public String getNombreOrganizacion(Long cod){
         return bbdd.buscarONG(cod).getNombreONG();
     }
@@ -168,6 +190,12 @@ public class CRUDActividadesController implements Serializable{
        bbdd.modificarActividad(a);
         
         return "participacionActividad.xhtml";
+    }
+     public String modificarInscripcion(){
+        
+       bbdd.modificarParticipacion(participacion);
+        
+        return "inscripciones.xhtml";
     }
     public List<Actividad> actRechazadas(Long cod){
       

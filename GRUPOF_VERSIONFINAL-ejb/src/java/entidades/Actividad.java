@@ -294,6 +294,9 @@ public class Actividad implements Serializable {
         this.revisar = revisar;
     }
     public void anadirParticipacionLista(ParticipacionEnActividad p){
+        if(participantes == null){
+            participantes = new ArrayList<>();
+        }
         participantes.add(p);
     }
   

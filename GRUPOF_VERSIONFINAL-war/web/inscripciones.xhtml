@@ -19,32 +19,33 @@
                                 <tr>
                                         <th>Id Participacion</th>
                                         <th>Fecha</th>
-                                        <th>Nota</th>
-                                        <th>Comentarios</th>
-                                        <th>Horas dedicadas</th>
-                                        <th>Observaciones</th>
+                                        <th>Formacion</th>
+                                        <th>Idioma</th>
                                         <th>Estado</th>                         
                                 </tr>
                             </thead>
                         
                         <tbody>
-                            <ui:repeat var = "i" value="#{ListaSolicitudes.solicitudes}">
+                            <ui:repeat var = "i" value="#{ListaActividades.participantes}">
                                 <tr>                                
                                     <td>#{i.IDParticipacion}</td>
                                     <td>#{i.fecha}</td>
-                                    <td>#{i.nota}</td>
-                                    <td>#{i.comentariosNota}</td>
-                                    <td>#{i.horasDedicadas}</td>
-                                    <td>#{i.observaciones}</td>
+                                    <td>#{i.participaciones.formacion}</td>
+                                    <td>#{i.participaciones.idioma}</td>
                                     <td>#{i.estado}</td>
+                                   <center>
                                     <td>
-                                        <center>
-                                            <h:form> <h:column> <h:commandButton styleClass="btnAceptar" value ="Validar" action="#{ListaSolicitudes.aceptarSolicitud(i.IDParticipacion)}" /></h:column></h:form>
-                                            <h:form> <h:column> <h:commandButton styleClass="btnCancelar" value ="Denegar" action="#{ListaSolicitudes.denegarSolicitud(i.IDParticipacion)}"/></h:column></h:form>
                                        
+                                              <h:form>
+                                         
+                                            <h:column>
+                                                <h:commandButton styleClass="email2"  value="Gestionar inscripcion" action="#{ListaActividades.gestionarInscripcion(i.IDParticipacion)}"/> 
+                                            </h:column> 
+                                        </h:form>
+                                    </td>
                                         </center>
                                         
-                                    </td>             
+                                                 
                                 </tr>
                             </ui:repeat>
                         </tbody>

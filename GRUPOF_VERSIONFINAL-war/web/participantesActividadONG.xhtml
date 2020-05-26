@@ -18,7 +18,7 @@
                         <thead>
                                 <tr>
                                         <th>Nombre</th>
-                                        <th>Apellido</th>
+                                        <th>Apellidos</th>
                                         <th>DNI</th>
                                         <th>Email</th>
                                                               
@@ -26,19 +26,13 @@
                             </thead>
                         
                         <tbody>
-                            <ui:repeat var = "i" value="#{Evaluaciones.usuarios}">
+                            <ui:repeat var = "i" value="#{ListaActividades.getParticipantes()}">
                                 <tr>                                
-                                    <td>#{i.nombre}</td>
-                                    <td>#{i.apellidos}</td>
-                                    <td>#{i.DNI}</td>
-                                    <td>#{i.email}</td>
-                              
-                                    <td>
-                                        <center>
-                                        <h:form> <h:column> <h:commandButton styleClass="email2" value ="Valorar" action="valoracionesPrivadas.xhtml"/></h:column></h:form>
-                                        </center>
-                                        
-                                    </td>             
+                                    <td>#{i.participaciones.nombre}</td>
+                                    <td>#{i.participaciones.apellidos}</td>
+                                    <td>#{i.participaciones.DNI}</td>
+                                    <td>#{i.participaciones.email}</td>
+                                       
                                 </tr>
                             </ui:repeat>
                         </tbody>

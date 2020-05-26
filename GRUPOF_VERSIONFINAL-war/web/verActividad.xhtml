@@ -15,6 +15,17 @@
                                 
                 <h:form id="ListaActividades">
                 
+                       <h:inputHidden value="#{ListaActividades.a.codActividad}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.nombreActividad}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.codONG}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.fechaInicio}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.fechaFin}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.localizacion}"></h:inputHidden> 
+                    <h:inputHidden value="#{ListaActividades.a.descripcion}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.capacidadesNecesarias}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.tipoActividad}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.estadoActividad}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.estadoSolicitud}"></h:inputHidden> 
                     <h:inputHidden value="#{ListaActividades.a.codActividad}"></h:inputHidden>
                     <table id="tablaListaActividades">
                         <tr>
@@ -64,7 +75,7 @@
                                             
                         
                     </table>
-                    <h:commandButton value="Petición de inscripción"  styleClass="btnOtro"  action="#{ListaActividades.peticionInscripcion(i, controlAutorizacion.usuario)}" /> 
+                    <h:commandButton value="Petición de inscripción"  styleClass="btnOtro"  action="#{ListaActividades.peticionInscripcion(controlAutorizacion.usuario)}" /> 
                     <h:commandButton value="Valorar Actividad"   styleClass="btnAceptar"  action="#{ValoracionesPublicas.Valorar(ListaActividades.a.codActividad)}" /> 
                     <h:commandButton value="Valoraraciones de otros usuarios"   styleClass="btnCambiar"  action="#{ValoracionesPublicas.ValoracionesOtrosUsuarios(ListaActividades.a.codActividad)}" /> 
                      
@@ -87,6 +98,17 @@
                 <h:form id="ListaActividades">
                 
                     <h:inputHidden value="#{ListaActividades.a.codActividad}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.nombreActividad}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.codONG}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.fechaInicio}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.fechaFin}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.localizacion}"></h:inputHidden> 
+                    <h:inputHidden value="#{ListaActividades.a.descripcion}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.capacidadesNecesarias}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.tipoActividad}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.estadoActividad}"></h:inputHidden>
+                    <h:inputHidden value="#{ListaActividades.a.estadoSolicitud}"></h:inputHidden> 
+                    
                     <table id="tablaListaActividades">
                         <tr>
                         <td>Código de Actividad</td>
@@ -135,7 +157,7 @@
                                             
                         
                     </table>
-                    <h:commandButton value="Petición de inscripción"  styleClass="btnOtro"  action="#{ListaActividades.peticionInscripcion(i, controlAutorizacion.usuario)}" /> 
+                    <h:commandButton value="Petición de inscripción"  styleClass="btnOtro"  action="#{ListaActividades.peticionInscripcion(controlAutorizacion.usuario)}" /> 
                     <h:commandButton value="Valorar Actividad"   styleClass="btnAceptar"  action="#{ValoracionesPublicas.Valorar(ListaActividades.a.codActividad)}" /> 
                     <h:commandButton value="Valoraraciones de otros usuarios"   styleClass="btnCambiar"  action="#{ValoracionesPublicas.ValoracionesOtrosUsuarios(ListaActividades.a.codActividad)}" /> 
                      

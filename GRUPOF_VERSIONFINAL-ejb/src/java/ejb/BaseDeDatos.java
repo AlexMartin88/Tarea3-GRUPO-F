@@ -191,6 +191,11 @@ public class BaseDeDatos implements BaseDeDatosLocal{
         
     }
     @Override
+    public List<ParticipacionEnActividad> buscarPorEstado(String estado,Actividad a){
+        Query q = em.createNamedQuery("buscarporEstado").setParameter("estado", estado).setParameter("actividad", a);
+        return q.getResultList();
+    }
+    @Override
     public ParticipacionEnActividad buscarParticipante(Long id){
         
         ParticipacionEnActividad p = em.find(ParticipacionEnActividad.class, id);

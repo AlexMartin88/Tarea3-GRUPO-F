@@ -5,57 +5,57 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 >
      <link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico"/>
-    <ui:define name="title">Evaluaciones</ui:define>
+    <ui:define name="title">Participantes</ui:define>
     <ui:define name="content">
         <c:choose>
-            <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI'}">
-                <h1>EVALUACIONES</h1>
+            <c:when test="#{controlAutorizacion.getUsuario().getRol()=='PDI' }">
+                <h1>Evaluaciones</h1>
                 <center>
-                 
                     
-                  
+                    
                 <div class="bordeTablaActividades">
                     <table id="tablaListaActividades">
                         <thead>
                                 <tr>
-                                        <th>Id Participacion</th>
+                                    <th>ID Participacion</th>
                                         <th>Nombre</th>
                                         <th>Apellidos</th>
                                         <th>Horas dedicadas</th>
-                                        
                                        
-                                      
+                                                              
                                 </tr>
                             </thead>
                         
                         <tbody>
-                            <ui:repeat var = "i" value="#{ListaActividades.participantes}">
-                                <tr>                                
+                            <ui:repeat var = "i" value="#{ListaActividades.getParticipantes()}">
+                                <tr>                          
                                     <td>#{i.IDParticipacion}</td>
                                     <td>#{i.participaciones.nombre}</td>
                                     <td>#{i.participaciones.apellidos}</td>
                                     <td>#{i.horasDedicadas}</td>
-                                    
-                                    <center>
-                                    
-                                    <td>
-                                        <h:form> <h:column><h:commandButton styleClass="email2" value ="Evaluar" action="#{ListaActividades.verEvaluarUsuario(i.IDParticipacion)}"/> </h:column> </h:form>
-                  
-                                    </td>
-                                    <td>
-                                        <h:form><h:column><h:commandButton styleClass="btnCambiar" value ="Volver a la lista de actividades" action="CRUDActividades.xhtml"/></h:column></h:form>
-                                                
+                                       
+                              
+                               <h:form>
                                         
-                                    </td>    
-                                    </center>
-                                </tr>
+                                        <h:column> <h:commandLink value="Evaluar" styleClass="btnOtro" action="newxhtml.xhtml">  </h:commandLink></h:column>
+                                       
+                                    </h:form>
+                                  
+                               
+                                      </tr>
+                               
                             </ui:repeat>
+                            
                         </tbody>
+                          
                     </table>
+                  
+                   
                 </div>
-                      
                    
                 </center>
+                 
+               
             </c:when>
             <c:otherwise>
                 <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>

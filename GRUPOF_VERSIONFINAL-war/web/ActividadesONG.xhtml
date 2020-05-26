@@ -48,10 +48,10 @@
                                     <td>#{i.estadoActividad}</td>  
                                     <td>#{i.estadoSolicitud}</td>  
                                     <td> 
-                                        <center>
-                                        <h:form> <h:column> <h:commandButton styleClass="btnOtro" value="Participantes en Actividad" action="participantesActividadONG.xhtml"/> </h:column> </h:form>
-                                        </center>
-                                    </td>                                    
+                                        
+                                            <h:form> <h:column> <h:commandButton styleClass="btnOtro" value="Participantes en Actividad" action="#{ListaActividades.participantesONG(i.codActividad)}"/> </h:column> </h:form>
+                                    </td>
+                                                                       
                                 </tr>
                             </ui:repeat>
                         </tbody>
@@ -59,10 +59,12 @@
                 </div>
                    
                       </center>
-            </c:when>
+            </c:when>               
+            
             <c:otherwise>
-                <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>
+              <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>
             </c:otherwise>
+          
         </c:choose>
     </ui:define>
 </ui:composition>
