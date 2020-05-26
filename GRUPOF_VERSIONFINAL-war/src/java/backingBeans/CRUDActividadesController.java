@@ -52,7 +52,7 @@ public class CRUDActividadesController implements Serializable{
        // ong = new Organizacion();
        participacion = new ParticipacionEnActividad();
        participantes = new ArrayList<>();
-         participantesONG = new ArrayList<>();
+       participantesONG = new ArrayList<>();
        
        
     }
@@ -194,8 +194,8 @@ public ParticipacionEnActividad getParticipanteAct(){
         return "gestionarSolicitud.xhtml";
     }
        public String gestionarInscripcion(Long cod){
-        
-        participacion = bbdd.buscarParticipante(cod);
+        idParticipacion = cod;
+        participacion = bbdd.buscarParticipante(351L);
        
         return "gestionarInscripcion.xhtml";
     }
