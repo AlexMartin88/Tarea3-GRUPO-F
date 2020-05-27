@@ -26,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -35,7 +36,7 @@ import javax.inject.Named;
  */
 
 @Named(value ="Evaluaciones")
-@RequestScoped
+@SessionScoped
 public class EvaluacionesController implements Serializable {
     
     @Inject 

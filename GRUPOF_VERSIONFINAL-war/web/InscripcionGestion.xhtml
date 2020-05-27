@@ -13,9 +13,7 @@
                 <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI'}">
                     <h1>Gestionar inscripcion</h1>
                     <center>
-                       
-                      
-                       
+                     
                       
                            <h:inputHidden value="#{ListaSolicitudes.participacion.IDParticipacion}"></h:inputHidden>
                             <h:inputHidden value="#{ListaSolicitudes.participacion.fecha}"></h:inputHidden>
@@ -53,39 +51,22 @@
                                  <td><h:outputText  value="#{ListaSolicitudes.participacion.participaciones.idioma}"/></td>
                                  
                              </tr>
-                        
-                        
-                            
-                                     <tr>
-                            <td>Estado inscripción</td>
-                            <td>
-                                <h:selectOneMenu  value="#{ListaSolicitudes.participacion.estado}"  >
-                                    
-                                    <f:selectItem itemValue="ACEPTADA" itemLabel="ACEPTADA"  />
-                                    <f:selectItem itemValue="DENEGADA" itemLabel="DENEGADA"  />
-                                  
-
-                                </h:selectOneMenu>
-                                
-                                
-                            </td>
-                        </tr> 
-                                 
-                           
-                         
-
+                       
                
                          </table>
                             
-                              
-                             <h:form> 
-                                 <h:commandButton value="Guardar Cambios" styleClass="btnAceptar"  action="#{ListaSolicitudes.modificarInscripcion()}" /> 
-                                         <h:commandButton styleClass="btnOtro" value ="Volver atrás" action="#{ListaSolicitudes.inscripciones(ListaSolicitudes.participacion.participantes.codActividad)}" />
+                        
+               
+                      
+                             <h:form>
+                                 
+                            
+                                 <h:commandButton value="Validar" styleClass="btnAceptar"  action="#{ListaSolicitudes.validarInscripcion()}" /> 
+                                 <h:commandButton value="Denegar" styleClass="btnCancelar"  action="#{ListaSolicitudes.denegarInscripcion()}" /> 
+                                 <h:commandButton styleClass="btnOtro" value ="Volver atrás" action="#{ListaSolicitudes.inscripciones(ListaSolicitudes.participacion.participantes.codActividad)}" />
                                     
-                             
-                            </h:form>      
-                  
-                          
+                            </h:form>
+                                 
                          
                         
                     </center>

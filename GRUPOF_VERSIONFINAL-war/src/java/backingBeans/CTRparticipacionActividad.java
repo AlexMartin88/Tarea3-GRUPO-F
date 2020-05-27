@@ -31,12 +31,12 @@ public class CTRparticipacionActividad implements Serializable{
     
     @Inject 
     private BaseDeDatosLocal bbdd;
-      private ParticipacionEnActividad participacion;
+    private ParticipacionEnActividad participacion;
     private Actividad a; 
     private List<ParticipacionEnActividad> participantes;
     
     
-   
+  
     public CTRparticipacionActividad(){
         participacion = new ParticipacionEnActividad();
         a = new Actividad();
@@ -70,14 +70,26 @@ public class CTRparticipacionActividad implements Serializable{
     public void setParticipacion(ParticipacionEnActividad participacion) {
         this.participacion = participacion;
     }
-  public String modificarInscripcion(){
+  
+  public String validarInscripcion(){
       
-     //participacion.setEstado("ACEPTADA");
-     //participacion.setEstado("DENEGADA");
+     participacion.setEstado("ACEPTADA");
+   
         
        bbdd.modificarParticipacion(participacion);
         
-        return "CRUDActividades.xhtml";
+        inscripciones(participacion.getParticipantes().getCodActividad());
+        return "inscripciones.xhtml";
+    }
+   public String denegarInscripcion(){
+      
+     
+     participacion.setEstado("DENEGADA");
+        
+       bbdd.modificarParticipacion(participacion);
+        
+          inscripciones(participacion.getParticipantes().getCodActividad());
+            return "inscripciones.xhtml";
     }
     public Actividad getA() {
         return a;
