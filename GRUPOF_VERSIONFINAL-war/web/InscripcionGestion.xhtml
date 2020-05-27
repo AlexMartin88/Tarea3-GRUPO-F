@@ -13,12 +13,16 @@
                 <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI'}">
                     <h1>Gestionar inscripcion</h1>
                     <center>
+                       
                       
-                        <h:form id="ListaActividades">
-                            <h:inputHidden value="#{ListaActividades.participacion.IDParticipacion}"></h:inputHidden>
-                            <h:inputHidden value="#{ListaActividades.participacion.fecha}"></h:inputHidden>
-                            <h:inputHidden value="#{ListaActividades.participacion.participaciones}"></h:inputHidden>
-                            <!--<h:inputHidden value="#{ListaActividades.participacion.participantes}"></h:inputHidden>-->
+                       
+                      
+                           <h:inputHidden value="#{ListaSolicitudes.participacion.IDParticipacion}"></h:inputHidden>
+                            <h:inputHidden value="#{ListaSolicitudes.participacion.fecha}"></h:inputHidden>
+                            <h:inputHidden value="#{ListaSolicitudes.participacion.participaciones}"></h:inputHidden>
+                            <h:inputHidden value="#{ListaSolicitudes.participacion.participantes}"></h:inputHidden>
+                         
+
                             
                          <table id="tablaListaActividades">
                               
@@ -27,35 +31,35 @@
                              <tr>
                                  
                                  <td>ID Participacion </td>
-                                 <td><h:outputText  value="#{ListaActividades.participacion.IDParticipacion}"/></td>
+                                 <td><h:outputText  value="#{ListaSolicitudes.participacion.IDParticipacion}"/></td>
                              </tr>
                              
                              <tr>
                                  <td>Fecha </td>
 
-                                 <td><h:outputText  value="#{ListaActividades.participacion.fecha}"/></td>
+                                 <td><h:outputText  value="#{ListaSolicitudes.participacion.fecha}"/></td>
                                  
                              </tr>
                               <tr>
                                  <td>Formacion </td>
 
-                                 <td><h:outputText  value="#{ListaActividades.participacion.participaciones.formacion}"/></td>
+                                 <td><h:outputText  value="#{ListaSolicitudes.participacion.participaciones.formacion}"/></td>
                                  
                              </tr>
                              
                               <tr>
                                  <td>Idioma </td>
 
-                                 <td><h:outputText  value="#{ListaActividades.participacion.participaciones.idioma}"/></td>
+                                 <td><h:outputText  value="#{ListaSolicitudes.participacion.participaciones.idioma}"/></td>
                                  
                              </tr>
                         
                         
-                        
-                             <tr>
+                            
+                                     <tr>
                             <td>Estado inscripción</td>
                             <td>
-                                <h:selectOneMenu  value="#{ListaActividades.participacion.estado}"  >
+                                <h:selectOneMenu  value="#{ListaSolicitudes.participacion.estado}"  >
                                     
                                     <f:selectItem itemValue="ACEPTADA" itemLabel="ACEPTADA"  />
                                     <f:selectItem itemValue="DENEGADA" itemLabel="DENEGADA"  />
@@ -66,19 +70,25 @@
                                 
                             </td>
                         </tr> 
+                                 
+                           
+                         
 
-                     
-                       
-                            
+               
                          </table>
-                            <h:commandButton value="Guardar Cambios" styleClass="btnAceptar"  action="#{ListaActividades.modificarInscripcion()}" /> 
-                            <h:commandButton value="Volver atrás"   styleClass="btnOtro"  action="inscripciones.xhtml" />
-                       
-                     </h:form>
+                            
+                              
+                             <h:form> 
+                                 <h:commandButton value="Guardar Cambios" styleClass="btnAceptar"  action="#{ListaSolicitudes.modificarInscripcion()}" /> 
+                                         <h:commandButton styleClass="btnOtro" value ="Volver atrás" action="#{ListaSolicitudes.inscripciones(ListaSolicitudes.participacion.participantes.codActividad)}" />
+                                    
+                             
+                            </h:form>      
+                  
                           
+                         
                         
                     </center>
-                  
                     
                  
                 </c:when>

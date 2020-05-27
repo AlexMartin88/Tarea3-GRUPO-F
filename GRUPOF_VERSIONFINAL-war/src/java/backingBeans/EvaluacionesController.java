@@ -24,6 +24,7 @@ import entidades.Usuario;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -39,87 +40,53 @@ public class EvaluacionesController implements Serializable {
     
     @Inject 
     private BaseDeDatosLocal bbdd;
+      private List<ParticipacionEnActividad> participantes;
+        private ParticipacionEnActividad participacion;
+        
     
-    private ArrayList<ParticipacionEnActividad> participaciones;
-    private ArrayList<ParticipacionEnActividad> participacionesValorar;
-    private ArrayList<Usuario> usuarios;
-    private Usuario usuario;
-    private Actividad actividad;
-
-    private ParticipacionEnActividad p;
-
-    public ArrayList<ParticipacionEnActividad> getParticipaciones() {
-        return participaciones;
-    }
-
-    public void setParticipaciones(ArrayList<ParticipacionEnActividad> participaciones) {
-        this.participaciones = participaciones;
-    }
-    public Actividad getActividad() {
-        return actividad;
-    }
-
-    public void setActividad(Actividad actividad) {
-        this.actividad = actividad;
-    }
     
     public EvaluacionesController(){
-        usuarios = new ArrayList<>();
-        usuarios.add(new Usuario("Alberto","Aguilera","1234567U","aguil@uma.es"));
-         usuarios.add(new Usuario("Paco","Martinez","1872237U","pam@uma.es"));
-       
-        
-        participaciones = new ArrayList<>();
-        participacionesValorar = new ArrayList<>();
-        SimpleDateFormat dateformat3 = new SimpleDateFormat("dd/MM/yyyy");
-       
-        participaciones.add(new ParticipacionEnActividad(new Long(1),"21/11/2020", 8 , "Perfe", 16, "Todo perfe","Evaluado"));
-        participaciones.add(new ParticipacionEnActividad(new Long(2),"22/11/2020", 7 , "Correcto", 15, "Todo bien","Evaluado"));
-        participaciones.add(new ParticipacionEnActividad(new Long(3),"23/11/2020", 6 , "Bien", 13, "Todo perfe","Evaluado"));
-        participaciones.add(new ParticipacionEnActividad(new Long(4),"24/11/2020", 9 , "Excelente", 18, "Todo perfe","Evaluado"));
-        participaciones.add(new ParticipacionEnActividad(new Long(5),"25/11/2020", 0 , " ", 0, "","No evaluado"));
-        p = new ParticipacionEnActividad(new Long(5),"25/11/2020", 0 , " ", 0, "","No evaluado");
-    }
-
-    public ArrayList<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(ArrayList<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+        participantes = new ArrayList<>();
+         participacion = new ParticipacionEnActividad();
     }
     
-    public String home(){
-        //No inicia sesion
-        if(getUsuario()==null){
-            return "login.xhtml";
-        }
-       
-        return null;
-    }
     
-     public String logout(){
-        FacesContext ctx = FacesContext.getCurrentInstance();
-        ctx.getExternalContext().invalidateSession();
-        usuario = null;
-        return "login.xhtml";
+   public String EvaluarUser(Long cod){
+        //codigo = cod;
+        for (ParticipacionEnActividad p : bbdd.buscarActividad(cod).getParticipantes()) {
+           if(p.getEstado().equalsIgnoreCase("ACEPTADA")){
+               participantes.add(p);
+           }
+       }
+     
+        return "evaluaciones.xhtml";
     }
 
-    public ParticipacionEnActividad getP() {
-        return p;
+    public List<ParticipacionEnActividad> getParticipantes() {
+        return participantes;
     }
 
-    public void setP(ParticipacionEnActividad p) {
-        this.p = p;
+    public void setParticipantes(List<ParticipacionEnActividad> participantes) {
+        this.participantes = participantes;
+    }
+   
+    public String verEvaluarUsuario(Long id){
+     
+       participacion = bbdd.buscarParticipante(id);
+       
+        return "evaluacion.xhtml";
+    }
+
+    public ParticipacionEnActividad getParticipacion() {
+        return participacion;
+    }
+
+    public void setParticipacion(ParticipacionEnActividad participacion) {
+        this.participacion = participacion;
     }
      
-     
+    public String modificaEvaluacion(){
+        bbdd.modificarParticipacion(participacion);
+        return "CRUDActividades.xhtml";
+    }
 }

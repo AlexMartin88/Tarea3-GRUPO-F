@@ -27,20 +27,20 @@
                             </thead>
                         
                         <tbody>
-                            <ui:repeat var = "i" value="#{ListaActividades.getParticipantes()}">
+                            <ui:repeat var = "i" value="#{Evaluaciones.getParticipantes()}">
                                 <tr>                          
                                     <td>#{i.IDParticipacion}</td>
                                     <td>#{i.participaciones.nombre}</td>
                                     <td>#{i.participaciones.apellidos}</td>
                                     <td>#{i.horasDedicadas}</td>
                                        
-                              
+                                    <td>
                                <h:form>
                                         
-                                        <h:column> <h:commandLink value="Evaluar" styleClass="btnOtro" action="newxhtml.xhtml">  </h:commandLink></h:column>
+                                   <h:column> <h:commandButton value="Evaluar" styleClass="btnOtro" action="#{Evaluaciones.verEvaluarUsuario(i.IDParticipacion)}"/></h:column>
                                        
                                     </h:form>
-                                  
+                                        </td>
                                
                                       </tr>
                                

@@ -28,31 +28,45 @@
                             </thead>
                         
                         <tbody>
-                            <ui:repeat var = "i" value="#{ListaActividades.getParticipantes()}">
+                            
+                            <ui:repeat var="i" value="#{ListaSolicitudes.getParticipantes()}">
+                            
+                            
+                          
+                         
                                 <tr>                                
                                     <td>#{i.IDParticipacion}</td>
                                     <td>#{i.fecha}</td>
                                     <td>#{i.participaciones.formacion}</td>
                                     <td>#{i.participaciones.idioma}</td>
                                     <td>#{i.estado}</td>
-                                   <center>
-                                    <td>
-                                       
-                                              <h:form>
+                                    
+                                       <center>  
+                                    <td> 
+                                         
+                                        <h:form>
                                          
                                             <h:column>
-                                                <h:commandButton styleClass="email2"  value="Gestionar inscripcion" action="#{ListaActividades.gestionarInscripcion(i.IDParticipacion)}"/> 
+                                                <h:commandButton styleClass="email2"  value="Gestionar inscripcion" action="#{ListaSolicitudes.gestionarInscripcion(i.IDParticipacion)}"/> 
                                             </h:column> 
                                         </h:form>
+                                       
+                                     
                                     </td>
-                                        </center>
-                                        
-                                                 
+                                       </center>
+                                  
                                 </tr>
+                                 
                             </ui:repeat>
+                       
+                        
+                            
                         </tbody>
+                         
                     </table>
+                    
                 </div>
+                       
                  </center>
                 <center>
                       <h:form> <h:column> <h:commandButton styleClass="btnOtro" value ="Volver atrás" action="CRUDActividades.xhtml" /></h:column></h:form>

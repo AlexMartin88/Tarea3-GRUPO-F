@@ -76,21 +76,12 @@ public class CRUDActividadesController implements Serializable{
         }
         return "participantesActividadONG.xhtml";
     }
-    public String EvaluarUser(Long cod){
-        //codigo = cod;
-      participantes = bbdd.buscarActividad(cod).getParticipantes();
-        return "evaluaciones.xhtml";
-    }
+   
     public List<ParticipacionEnActividad> getParticipantes(){
        // bbdd.buscarActividad(codigo).getParticipantes();
         return participantes;
     }
-    public String verEvaluarUsuario(Long id){
-      idParticipacion = id;
-       // participacion = bbdd.buscarParticipante();
-       
-        return "evaluacion.xhtml";
-    }
+   
 public ParticipacionEnActividad getParticipanteAct(){
     u = bbdd.buscarParticipante(idParticipacion).getParticipaciones();
     return bbdd.buscarParticipante(idParticipacion);
@@ -104,10 +95,6 @@ public ParticipacionEnActividad getParticipanteAct(){
     }
   
     
-    public String modificaEvaluacion(){
-        bbdd.modificarParticipacion(participacion);
-        return "CRUDActividades.xhtml";
-    }
     public List<Actividad> Actividades(){
         return bbdd.todasActividades();
     }
@@ -121,14 +108,7 @@ public ParticipacionEnActividad getParticipanteAct(){
         bbdd.eliminarActividad(cod);
         return "CRUDActividades.xhtml";
     }
-    public String inscripciones(Long id){
-         a = bbdd.buscarActividad(id);
-         
-         participantes = bbdd.buscarPorEstado("PENDIENTE", a);
-        
-        return "inscripciones.xhtml"; 
-    }
-
+  
     public String createPropuesta(Long id){
         codigo = id;
         o=bbdd.buscarONG(id-1);
@@ -193,12 +173,9 @@ public ParticipacionEnActividad getParticipanteAct(){
        
         return "gestionarSolicitud.xhtml";
     }
-       public String gestionarInscripcion(Long cod){
-        idParticipacion = cod;
-        participacion = bbdd.buscarParticipante(351L);
-       
-        return "gestionarInscripcion.xhtml";
-    }
+     
+     
+
     public String getNombreOrganizacion(Long cod){
         return bbdd.buscarONG(cod).getNombreONG();
     }
@@ -208,12 +185,7 @@ public ParticipacionEnActividad getParticipanteAct(){
         
         return "participacionActividad.xhtml";
     }
-     public String modificarInscripcion(){
-        
-       bbdd.modificarParticipacion(participacion);
-        
-        return "inscripciones.xhtml";
-    }
+   
     public List<Actividad> actRechazadas(Long cod){
       
         return bbdd.actividadesRechazadas(cod-1);
