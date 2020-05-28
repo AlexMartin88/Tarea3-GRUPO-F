@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -34,19 +35,19 @@ public class CRUDActividadesController implements Serializable{
    private List<ParticipacionEnActividad> participantes;
    private List<ParticipacionEnActividad> participantesONG;
    private Usuario u;
-   private Actividad aBusqueda;
-   //private Long c = o.getUserID();
 
-    public Actividad getaBusqueda() {
-        return aBusqueda;
+   private List<Actividad> actividades;
+
+
+
+    public List<Actividad> getActividades() {
+        return actividades;
     }
 
-    public void setaBusqueda(Actividad aBusqueda) {
-        this.aBusqueda = aBusqueda;
+    public void setActividades(List<Actividad> actividades) {
+        this.actividades = actividades;
     }
-   
- 
-   
+    
 
     public Actividad getA() {
         return a;
@@ -58,11 +59,11 @@ public class CRUDActividadesController implements Serializable{
 
     public CRUDActividadesController(){
         a = new Actividad(); 
-       // ong = new Organizacion();
+      
        participacion = new ParticipacionEnActividad();
        participantes = new ArrayList<>();
        participantesONG = new ArrayList<>();
-       aBusqueda = new Actividad();
+       
        
        
     }
@@ -128,46 +129,6 @@ public ParticipacionEnActividad getParticipanteAct(){
        
         return "ActividadesONG.xhtml";
     }
-    public List<Actividad> buscarActividad(){
-     int contTipo=0;
-      int contLocal=0;
-      int contCapaci=0;
-      String cadena= "";
-      if(aBusqueda.getTipoActividad().length()>0){
-          contTipo++;
-      }if(aBusqueda.getLocalizacion().length()>0){
-          contLocal++;
-      } if(aBusqueda.getCapacidadesNecesarias().length()>0){
-          contCapaci++;
-      }
-      
-      if(contTipo==1){
-          
-       cadena += "  a.TipoActividad = '".concat(aBusqueda.getTipoActividad())+"'";
-      }
-       if(contLocal==1){
-           if(contTipo==1){
-               cadena+=" and a.Localizacion =  '".concat(aBusqueda.getLocalizacion())+"'";
-           }
-           else{
-                cadena+=" a.Localizacion  =  '".concat(aBusqueda.getLocalizacion())+"'";
-               
-           }
-            
-      }
-        if(contCapaci==1){
-            if(contTipo==1 || contLocal==1){
-                cadena+=" and  a.CapacidadesNecesarias = '".concat(aBusqueda.getCapacidadesNecesarias())+"'";
-            }else{
-                  cadena+=" a.CapacidadesNecesarias = '".concat(aBusqueda.getCapacidadesNecesarias())+"'";
-            }
-          
-      }
-      return bbdd.BuscarActividadBusqueda(cadena);
-      
-     
-    }
-    
   
     
    public String peticionInscripcion(Usuario u){

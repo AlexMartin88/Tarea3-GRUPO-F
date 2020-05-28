@@ -21,7 +21,7 @@
                     
                    
           
-                <div class="bordeTablaActividades">
+                    <div class="bordeTablaActividades">
                     <table id="tablaListaActividades">
                         <thead>
                                 <tr> 
@@ -39,7 +39,7 @@
                             </thead>
                         
                         <tbody>
-                            <ui:repeat var = "i" value="#{ListaActividades.buscarActividad()}">
+                            <ui:repeat var = "i" value="#{buscador.actividades}">
                                 <tr>             
                                  
                                     <td>#{i.codActividad}</td>
@@ -74,7 +74,7 @@
                     </table>
                 </div>
                  <td>          
-                                        <h:form> <h:column> <h:commandButton styleClass="btnotrosUsers" value="Volver a la lista de Actividades" action="CRUDActividades.xhtml" /> </h:column> </h:form>
+                     <h:form><h:commandButton styleClass="btnotrosUsers" value="Volver a la lista de Actividades" action="#{controlAutorizacion.CRUDActividades()}" /></h:form>
                                     </td>
                 </center>
             </c:when>
@@ -107,7 +107,7 @@
                             </thead>
                         
                         <tbody>
-                            <ui:repeat var = "i" value="#{ListaActividades.buscarActividad()}">
+                            <ui:repeat var = "i" value="#{buscador.actividades}">
                                 <tr>                             
                                     <td>#{i.codActividad}</td>
                                     <td>#{i.nombreActividad}</td>
@@ -129,7 +129,7 @@
                     </table>
                 </div>
                     <td>          
-                                        <h:form> <h:column> <h:commandButton styleClass="btnotrosUsers" value="Volver a la lista de Actividades" action="CRUDActividades.xhtml" /> </h:column> </h:form>
+                                        <h:form>  <h:commandButton styleClass="btnotrosUsers" value="Volver a la lista de Actividades" action="CRUDActividades.xhtml" /> </h:form>
                                     </td>
                       </center>
             </c:when>

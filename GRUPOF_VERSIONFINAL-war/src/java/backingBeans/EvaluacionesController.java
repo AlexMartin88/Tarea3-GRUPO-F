@@ -18,16 +18,11 @@ package backingBeans;
 
 
 import ejb.BaseDeDatosLocal;
-import entidades.Actividad;
 import entidades.ParticipacionEnActividad;
-import entidades.Usuario;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 /**
@@ -47,13 +42,13 @@ public class EvaluacionesController implements Serializable {
     
     
     public EvaluacionesController(){
-        participantes = new ArrayList<>();
+       // participantes = new ArrayList<>();
          participacion = new ParticipacionEnActividad();
     }
     
     
    public String EvaluarUser(Long cod){
-        //codigo = cod;
+         participantes = new ArrayList<>(); 
         for (ParticipacionEnActividad p : bbdd.buscarActividad(cod).getParticipantes()) {
            if(p.getEstado().equalsIgnoreCase("ACEPTADA")){
                participantes.add(p);

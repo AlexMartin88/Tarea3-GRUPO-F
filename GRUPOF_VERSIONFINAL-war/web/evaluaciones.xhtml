@@ -20,19 +20,19 @@
                                     <th>ID Participacion</th>
                                         <th>Nombre</th>
                                         <th>Apellidos</th>
-                                        <th>Horas dedicadas</th>
+                                        
                                        
                                                               
                                 </tr>
                             </thead>
                         
                         <tbody>
-                            <ui:repeat var = "i" value="#{Evaluaciones.getParticipantes()}">
+                            <ui:repeat var = "i" value="#{Evaluaciones.participantes}">
                                 <tr>                          
                                     <td>#{i.IDParticipacion}</td>
                                     <td>#{i.participaciones.nombre}</td>
                                     <td>#{i.participaciones.apellidos}</td>
-                                    <td>#{i.horasDedicadas}</td>
+                                 
                                        
                                     <td>
                                <h:form>

@@ -21,7 +21,7 @@
                           <tr>
                             <td>Tipo de actividad</td>
                             <td>
-                                 <h:selectOneMenu  value="#{ListaActividades.getaBusqueda().tipoActividad}"  class="email" >
+                                 <h:selectOneMenu  value="#{buscador.busqueda.tipoActividad}"  class="email" >
                                     
                                     <f:selectItem itemValue="VOLUNTARIADO" itemLabel="VOLUNTARIADO"  />
                                     <f:selectItem itemValue="FORMACION" itemLabel="FORMACION"  />
@@ -36,13 +36,13 @@
                         
               
                       <tr>
-                          <td>Localizacion <h:inputText value="#{ListaActividades.getaBusqueda().localizacion}" class="email"/></td>
+                          <td>Localizacion <h:inputText value="#{buscador.busqueda.localizacion}" class="email"/></td>
                       </tr>
                         <tr>
-                            <td>Capacidades necesarias <h:inputText value="#{ListaActividades.getaBusqueda().capacidadesNecesarias}" class="email"/></td>
+                            <td>Capacidades necesarias <h:inputText value="#{buscador.busqueda.capacidadesNecesarias}" class="email"/></td>
                       </tr>
                           <tr>
-                              <h:commandButton class="btnOtro" value="Buscar" action="ActividadesBuscadas.xhtml"/>
+                              <h:commandButton class="btnOtro" value="Buscar" action="#{buscador.buscar()}"/>
                           </tr>
                       </div>
                      
@@ -115,12 +115,12 @@
                       <center>
                          
                        
-                <h:form id="tablaListaActividades" >    
+                 <h:form id="tablaListaActividades" >    
                       <div>  
                           <tr>
                             <td>Tipo de actividad</td>
                             <td>
-                                 <h:selectOneMenu  value="#{ListaActividades.getaBusqueda().tipoActividad}"  class="email" >
+                                 <h:selectOneMenu  value="#{buscador.busqueda.tipoActividad}"  class="email" >
                                     
                                     <f:selectItem itemValue="VOLUNTARIADO" itemLabel="VOLUNTARIADO"  />
                                     <f:selectItem itemValue="FORMACION" itemLabel="FORMACION"  />
@@ -135,13 +135,13 @@
                         
               
                       <tr>
-                          <td>Localizacion <h:inputText value="#{ListaActividades.getaBusqueda().localizacion}" class="email"/></td>
+                          <td>Localizacion <h:inputText value="#{buscador.busqueda.localizacion}" class="email"/></td>
                       </tr>
                         <tr>
-                            <td>Capacidades necesarias <h:inputText value="#{ListaActividades.getaBusqueda().capacidadesNecesarias}" class="email"/></td>
+                            <td>Capacidades necesarias <h:inputText value="#{buscador.busqueda.capacidadesNecesarias}" class="email"/></td>
                       </tr>
                           <tr>
-                              <h:commandButton class="btnOtro" value="Buscar" action="ActividadesBuscadas.xhtml"/>
+                              <h:commandButton class="btnOtro" value="Buscar" action="#{buscador.buscar()}"/>
                           </tr>
                       </div>
                      
