@@ -341,6 +341,18 @@ public class BaseDeDatos implements BaseDeDatosLocal{
       em.persist(em.merge(p));
     }
 
+    @Override
+    public List<Actividad> BuscarActividadBusqueda(String cadena) {
+        String consulta = "select a from Actividad a  where a.EstadoSolicitud = 'ACEPTADA' ";
+        if(cadena.length()>0){
+       
+            consulta+=" and ".concat(cadena);
+        }
+        Query q = em.createQuery(consulta);
+        
+        return q.getResultList();
+    }
+
    
 
     

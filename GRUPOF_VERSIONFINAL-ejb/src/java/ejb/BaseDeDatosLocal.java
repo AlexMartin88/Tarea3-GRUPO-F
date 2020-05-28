@@ -74,6 +74,7 @@ public interface BaseDeDatosLocal {
     
     //----Métodos de búsqueda en la base de datos----// //NO SE SI SON NECESARIOS ESTOS METODOS, EL DE ACTIVIDAD QUIZAS SI PERO PASANDOLE LOS PARAMETROS DEL MATCHING.
     public Actividad buscarActividad(Long n);
+    public List<Actividad> BuscarActividadBusqueda(String cadena);
     public Usuario buscarUsuario(Long usr);
     public void buscarPDI(PDI pdi);
     public  Organizacion buscarONG(Long org);

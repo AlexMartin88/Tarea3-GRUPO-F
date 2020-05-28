@@ -3,7 +3,8 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-                >
+                    
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
      <link rel="shortcut icon" type="image/x-icon" href="./resources/img/favicon.ico"/>
     <ui:define name="title">Ver actividad</ui:define>
     <ui:define name="content">
@@ -16,7 +17,7 @@
                 <h:form id="Evaluacion">
                     <h:inputHidden value="#{Evaluaciones.participacion.IDParticipacion}"></h:inputHidden>
                  <h:inputHidden value="#{Evaluaciones.participacion.participaciones}"></h:inputHidden>
-                    <h:inputHidden value="#{Evaluaciones.participacion.participaciones.horasDedicadas}"></h:inputHidden>
+               
                     <table id="tablaListaActividades">
                         
                         <tr>
@@ -38,16 +39,33 @@
                                <tr>
                             <td>Horas dedicadas </td>
 
-                            <td><h:outputText  value="#{Evaluaciones.participacion.horasDedicadas}"/></td>
+                            <td><h:inputText  value="#{Evaluaciones.participacion.horasDedicadas}"/></td>
                         </tr>
                              
-                             <tr>
-                                 
-                                 
-                            <td>Nota </td>
+                      
+                            <tr>
+                            <td>Nota</td>
+                            <td>
+                                <h:selectOneMenu  value="#{Evaluaciones.participacion.nota}"  >
+                                     
+                                    <f:selectItem itemValue="0" itemLabel="0"  />
+                                    <f:selectItem itemValue="1" itemLabel="1"  />
+                                    <f:selectItem itemValue="2" itemLabel="2"  />  
+                                    <f:selectItem itemValue="3" itemLabel="3"  />  
+                                    <f:selectItem itemValue="4" itemLabel="4"  />  
+                                    <f:selectItem itemValue="5" itemLabel="5"  />  
+                                    <f:selectItem itemValue="6" itemLabel="6"  />  
+                                    <f:selectItem itemValue="7" itemLabel="7"  />  
+                                    <f:selectItem itemValue="8" itemLabel="8"  />  
+                                    <f:selectItem itemValue="9" itemLabel="9"  />  
+                                    <f:selectItem itemValue="10" itemLabel="10"  />
 
-                            <td><h:inputText  value="#{Evaluaciones.participacion.nota}"/></td>
-                        </tr>
+                                </h:selectOneMenu>
+                                
+                                
+                            </td>
+                        </tr> 
+
                          <tr>
                             <td>Comentarios </td>
 

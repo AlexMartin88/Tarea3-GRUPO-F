@@ -16,7 +16,6 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({
     @NamedQuery(name="findAllActividades",query="select a from Actividad a where a.EstadoSolicitud=:estado"),
-    //@NamedQuery(name="modificarNoticia",query="update noticia set titulo=:Titulo,descripcion=:Descripcion,Fecha=:fecha where codnoticia=:id"),
     @NamedQuery(name="findAllActividadesONG",query="select a from Actividad a where a.codONG=:ong"),
     @NamedQuery(name="solicitudes",query="select a from Actividad a where a.EstadoSolicitud=:solicitud"),
     @NamedQuery(name="actRechazadas",query="select a from Actividad a where a.EstadoSolicitud=:solicitud and a.codONG=:ong"),

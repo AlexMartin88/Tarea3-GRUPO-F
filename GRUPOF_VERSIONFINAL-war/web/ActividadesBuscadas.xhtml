@@ -11,44 +11,12 @@
         <c:choose>
           
             <c:when test="#{controlAutorizacion.getUsuario().getRol() == 'PDI'}">
-                <h1>LISTA ACTIVIDADES</h1>
-          <center>
+                <h1>Filtro Busqueda Actividades</h1>
+          
                      
                
                
-                <h:form id="tablaListaActividades" >    
-                      <div>  
-                          <tr>
-                            <td>Tipo de actividad</td>
-                            <td>
-                                 <h:selectOneMenu  value="#{ListaActividades.getaBusqueda().tipoActividad}"  class="email" >
-                                    
-                                    <f:selectItem itemValue="VOLUNTARIADO" itemLabel="VOLUNTARIADO"  />
-                                    <f:selectItem itemValue="FORMACION" itemLabel="FORMACION"  />
-                                  
-                                  
-                                    
-                                </h:selectOneMenu>
-                                
-                                
-                            </td>
-                        </tr>  
-                        
-              
-                      <tr>
-                          <td>Localizacion <h:inputText value="#{ListaActividades.getaBusqueda().localizacion}" class="email"/></td>
-                      </tr>
-                        <tr>
-                            <td>Capacidades necesarias <h:inputText value="#{ListaActividades.getaBusqueda().capacidadesNecesarias}" class="email"/></td>
-                      </tr>
-                          <tr>
-                              <h:commandButton class="btnOtro" value="Buscar" action="ActividadesBuscadas.xhtml"/>
-                          </tr>
-                      </div>
-                     
-                    
-</h:form>
-                </center>
+     
                 <center>
                     
                    
@@ -71,7 +39,7 @@
                             </thead>
                         
                         <tbody>
-                            <ui:repeat var = "i" value="#{ListaActividades.Actividades()}">
+                            <ui:repeat var = "i" value="#{ListaActividades.buscarActividad()}">
                                 <tr>             
                                  
                                     <td>#{i.codActividad}</td>
@@ -105,49 +73,19 @@
                         </tbody>
                     </table>
                 </div>
-                
+                 <td>          
+                                        <h:form> <h:column> <h:commandButton styleClass="btnotrosUsers" value="Volver a la lista de Actividades" action="CRUDActividades.xhtml" /> </h:column> </h:form>
+                                    </td>
                 </center>
             </c:when>
             
             <c:when  test="#{controlAutorizacion.getUsuario().getRol() == 'ALUMNO'  || controlAutorizacion.getUsuario().getRol() == 'PAS'}">
                 
-                      <h1>LISTA ACTIVIDADES</h1>
-                      <center>
+                      <h1>Filtro Busqueda Actividades</h1>
+                      
                          
                        
-                <h:form id="tablaListaActividades" >    
-                      <div>  
-                          <tr>
-                            <td>Tipo de actividad</td>
-                            <td>
-                                 <h:selectOneMenu  value="#{ListaActividades.getaBusqueda().tipoActividad}"  class="email" >
-                                    
-                                    <f:selectItem itemValue="VOLUNTARIADO" itemLabel="VOLUNTARIADO"  />
-                                    <f:selectItem itemValue="FORMACION" itemLabel="FORMACION"  />
-                                  
-                                  
-                                    
-                                </h:selectOneMenu>
-                                
-                                
-                            </td>
-                        </tr>  
-                        
-              
-                      <tr>
-                          <td>Localizacion <h:inputText value="#{ListaActividades.getaBusqueda().localizacion}" class="email"/></td>
-                      </tr>
-                        <tr>
-                            <td>Capacidades necesarias <h:inputText value="#{ListaActividades.getaBusqueda().capacidadesNecesarias}" class="email"/></td>
-                      </tr>
-                          <tr>
-                              <h:commandButton class="btnOtro" value="Buscar" action="ActividadesBuscadas.xhtml"/>
-                          </tr>
-                      </div>
-                     
-                    
-</h:form>
-                      </center>
+    
                       <center>
                           
                        
@@ -169,7 +107,7 @@
                             </thead>
                         
                         <tbody>
-                            <ui:repeat var = "i" value="#{ListaActividades.Actividades()}">
+                            <ui:repeat var = "i" value="#{ListaActividades.buscarActividad()}">
                                 <tr>                             
                                     <td>#{i.codActividad}</td>
                                     <td>#{i.nombreActividad}</td>
@@ -190,7 +128,9 @@
                         </tbody>
                     </table>
                 </div>
-                   
+                    <td>          
+                                        <h:form> <h:column> <h:commandButton styleClass="btnotrosUsers" value="Volver a la lista de Actividades" action="CRUDActividades.xhtml" /> </h:column> </h:form>
+                                    </td>
                       </center>
             </c:when>
             <c:otherwise>
