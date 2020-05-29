@@ -42,15 +42,16 @@ public class EvaluacionesController implements Serializable {
     
     
     public EvaluacionesController(){
-       // participantes = new ArrayList<>();
+      // participantes = new ArrayList<>();
          participacion = new ParticipacionEnActividad();
     }
     
     
    public String EvaluarUser(Long cod){
-         participantes = new ArrayList<>(); 
+        participantes = new ArrayList<>(); 
         for (ParticipacionEnActividad p : bbdd.buscarActividad(cod).getParticipantes()) {
            if(p.getEstado().equalsIgnoreCase("ACEPTADA")){
+               
                participantes.add(p);
            }
        }
@@ -84,5 +85,38 @@ public class EvaluacionesController implements Serializable {
     public String modificaEvaluacion(){
         bbdd.modificarParticipacion(participacion);
         return "CRUDActividades.xhtml";
+    }
+    public String   Suspenso(){
+        participacion.setEstado("EVALUADO");
+        participacion.setNota(4);
+         bbdd.modificarParticipacion(participacion);
+      EvaluarUser(participacion.getParticipantes().getCodActividad());
+        return "evaluaciones.xhtml";
+        
+    }
+    
+    public String Aprobado(){
+        participacion.setEstado("EVALUADO");
+        participacion.setNota(5);
+        bbdd.modificarParticipacion(participacion);
+      EvaluarUser(participacion.getParticipantes().getCodActividad());
+        return "evaluaciones.xhtml";
+        
+    }
+     public String   Notable(){
+        participacion.setEstado("EVALUADO");
+        participacion.setNota(7);
+         bbdd.modificarParticipacion(participacion);
+       EvaluarUser(participacion.getParticipantes().getCodActividad());
+        return "evaluaciones.xhtml";
+        
+    }
+       public String   Sobresaliente(){
+        participacion.setEstado("EVALUADO");
+        participacion.setNota(9);
+         bbdd.modificarParticipacion(participacion);
+       EvaluarUser(participacion.getParticipantes().getCodActividad());
+        return "evaluaciones.xhtml";
+        
     }
 }

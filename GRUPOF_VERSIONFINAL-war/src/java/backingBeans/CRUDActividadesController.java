@@ -8,7 +8,9 @@ package backingBeans;
 import entidades.*;
 import ejb.BaseDeDatosLocal;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
@@ -132,7 +134,11 @@ public ParticipacionEnActividad getParticipanteAct(){
   
     
    public String peticionInscripcion(Usuario u){
-       participacion = new ParticipacionEnActividad("1/05/2009","PENDIENTE",a,u);
+       Date d = new Date();
+       SimpleDateFormat dfinal = new SimpleDateFormat("dd/mm/yyyy");
+       String cadFecha = dfinal.format(d);
+       
+       participacion = new ParticipacionEnActividad(cadFecha,"NO EVALUADO","PENDIENTE",a,u);
        bbdd.aniadirParticipante(participacion);
        a.anadirParticipacionLista(participacion);
        bbdd.modificarActividad(a);

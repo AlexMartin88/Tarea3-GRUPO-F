@@ -13,8 +13,7 @@
         
                 <h1>Evaluar</h1>              
                 <center>
-                  
-                <h:form id="Evaluacion">
+            
                     <h:inputHidden value="#{Evaluaciones.participacion.IDParticipacion}"></h:inputHidden>
                  <h:inputHidden value="#{Evaluaciones.participacion.participaciones}"></h:inputHidden>
                
@@ -36,46 +35,14 @@
                             <td><h:outputText  value="#{Evaluaciones.participacion.participaciones.apellidos}"/></td>
                         </tr>
                         
-                               <tr>
-                            <td>Horas dedicadas </td>
-
-                            <td><h:inputText  value="#{Evaluaciones.participacion.horasDedicadas}"/></td>
-                        </tr>
-                             
-                      
-                            <tr>
-                            <td>Nota</td>
-                            <td>
-                                <h:selectOneMenu  value="#{Evaluaciones.participacion.nota}"  >
-                                     
-                                    <f:selectItem itemValue="0" itemLabel="0"  />
-                                    <f:selectItem itemValue="1" itemLabel="1"  />
-                                    <f:selectItem itemValue="2" itemLabel="2"  />  
-                                    <f:selectItem itemValue="3" itemLabel="3"  />  
-                                    <f:selectItem itemValue="4" itemLabel="4"  />  
-                                    <f:selectItem itemValue="5" itemLabel="5"  />  
-                                    <f:selectItem itemValue="6" itemLabel="6"  />  
-                                    <f:selectItem itemValue="7" itemLabel="7"  />  
-                                    <f:selectItem itemValue="8" itemLabel="8"  />  
-                                    <f:selectItem itemValue="9" itemLabel="9"  />  
-                                    <f:selectItem itemValue="10" itemLabel="10"  />
-
-                                </h:selectOneMenu>
-                                
-                                
-                            </td>
-                        </tr> 
-
-                         <tr>
-                            <td>Comentarios </td>
-
-                            <td><h:inputText  value="#{Evaluaciones.participacion.comentariosNota}"/></td>
-                        </tr>
-                 
-                       
                     </table>
+                 <h:form>
                        
-<h:commandButton value="Evaluar"  styleClass="btnAceptar"  action="#{Evaluaciones.modificaEvaluacion()}" /> 
+<h:commandButton value="Suspenso"  styleClass="btnCancelar"  action="#{Evaluaciones.Suspenso()}" /> 
+<h:commandButton value="Aprobado"  styleClass="btnotros"  action="#{Evaluaciones.Aprobado()}" /> 
+<h:commandButton value="Notable"  styleClass="btnotrosUsers"  action="#{Evaluaciones.Notable()}" /> 
+<h:commandButton value="Sobresaliente"  styleClass="btnAceptar"  action="#{Evaluaciones.Sobresaliente()}" /> 
+<h:commandButton value="Volver atrás"  styleClass="btnOtro"  action="#{Evaluaciones.EvaluarUser(Evaluaciones.participacion.participantes.codActividad)}" /> 
                 </h:form>
                     
                       

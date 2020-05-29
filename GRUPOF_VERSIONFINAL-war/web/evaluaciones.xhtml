@@ -38,13 +38,18 @@
                                <h:form>
                                         
                                    <h:column> <h:commandButton value="Evaluar" styleClass="btnOtro" action="#{Evaluaciones.verEvaluarUsuario(i.IDParticipacion)}"/></h:column>
+                                       <h:column> <h:commandButton value="Volver atrás" styleClass="btnotrosUsers" action="#{ListaActividades.verActividad(i.participantes.codActividad)}"/></h:column>
+                                       
                                        
                                     </h:form>
                                         </td>
                                
                                       </tr>
                                
+
+                               
                             </ui:repeat>
+                             
                             
                         </tbody>
                           
@@ -52,6 +57,7 @@
                   
                    
                 </div>
+                      
                    
                 </center>
                  
