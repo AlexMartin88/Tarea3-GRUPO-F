@@ -138,7 +138,7 @@ public ParticipacionEnActividad getParticipanteAct(){
        SimpleDateFormat dfinal = new SimpleDateFormat("dd/mm/yyyy");
        String cadFecha = dfinal.format(d);
        
-       participacion = new ParticipacionEnActividad(cadFecha,"NO EVALUADO","PENDIENTE",a,u);
+       participacion = new ParticipacionEnActividad(cadFecha,"PENDIENTE",a,u);
        bbdd.aniadirParticipante(participacion);
        a.anadirParticipacionLista(participacion);
        bbdd.modificarActividad(a);

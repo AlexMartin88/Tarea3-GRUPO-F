@@ -36,10 +36,10 @@ public class Organizacion extends Usuario implements Serializable {
     private List<Actividad> Actividades;
     @OneToMany(mappedBy="valoracionONG")
     private List<ValoracionPrivada> valoraciones;
-    @OneToMany (cascade = {CascadeType.PERSIST})
+    @OneToMany 
     private List<Noticia> noticias;
 
-     @OneToMany(mappedBy="creadorNoticia",cascade = {CascadeType.PERSIST})
+     @OneToMany(mappedBy="creadorNoticia")
     private List<Noticia> noticiasCreadas;
      
      

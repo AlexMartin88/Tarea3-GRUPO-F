@@ -7,6 +7,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -67,12 +68,12 @@ public class ParticipacionEnActividad implements Serializable {
         this.Estado = Estado;
     }
 
-    public ParticipacionEnActividad(String fecha,String comentarios,String Estado,Actividad act,Usuario u){
+    public ParticipacionEnActividad(String fecha,String Estado,Actividad act,Usuario u){
         this.Fecha=fecha;
         this.Estado=Estado;
         this.participantes=act;
         this.participaciones=u;
-        this.ComentariosNota=comentarios;
+        
     }
     public Actividad getParticipantes() {
         return participantes;

@@ -42,8 +42,9 @@ public class Actividad implements Serializable {
     private String EstadoSolicitud;
     private String motivo;
     private Long codONG;
-    @ManyToOne
-    private Organizacion creadorONG;
+    @ManyToOne 
+
+    private Organizacion creadorONG; 
     @OneToMany(mappedBy="participantes")
     private List<ParticipacionEnActividad> participantes;
     @OneToMany(mappedBy="act")
@@ -51,7 +52,7 @@ public class Actividad implements Serializable {
     @ManyToMany
     @JoinTable(name="jnd_matc_act",joinColumns=@JoinColumn(name="actividad_fk"),inverseJoinColumns=@JoinColumn(name="matching_fk"))
     private List<Matching> matching;
-    @OneToMany(mappedBy="a")
+    @OneToMany(mappedBy="a",cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     private List<Asignatura> Asignaturas;
     @ManyToOne
     private PDI revisar;

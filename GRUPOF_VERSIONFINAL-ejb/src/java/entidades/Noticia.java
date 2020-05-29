@@ -40,9 +40,9 @@ public class Noticia implements Serializable {
     private String Titulo;
     private String Descripcion;
     private String fecha;
-    @ManyToOne (cascade = {CascadeType.PERSIST})
+    @ManyToOne 
     private Organizacion ong;
-    @ManyToOne (cascade = {CascadeType.PERSIST})
+    @ManyToOne
     private Organizacion creadorNoticia;
   
    

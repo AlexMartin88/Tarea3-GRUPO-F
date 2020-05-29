@@ -20,7 +20,7 @@ public class Alumno extends Usuario implements Serializable {
     
     private static final long serialVersionUID = 1L;
     private Long UserID;//codAlumno
-    @ManyToMany //Relacion Alumno-Asignatura
+    @ManyToMany 
     @JoinTable(name="jnd_alum_asig",joinColumns=@JoinColumn(name="alumno_fk"),inverseJoinColumns=@JoinColumn(name="asignatura_fk"))
     private List<Asignatura> Asignaturas;
 

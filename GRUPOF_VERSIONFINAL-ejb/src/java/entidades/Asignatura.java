@@ -7,6 +7,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,7 +35,7 @@ public class Asignatura implements Serializable {
     @ManyToMany
     @JoinTable(name="asig_pdi",joinColumns=@JoinColumn(name="pdi_fk"),inverseJoinColumns=@JoinColumn(name="asignatura_fk"))
     private List<PDI> PDI;
-    @ManyToOne
+    @ManyToOne 
     private Actividad a;
 
     

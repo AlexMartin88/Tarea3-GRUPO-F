@@ -87,7 +87,7 @@ public class EvaluacionesController implements Serializable {
         return "CRUDActividades.xhtml";
     }
     public String   Suspenso(){
-        participacion.setEstado("EVALUADO");
+        
         participacion.setNota(4);
          bbdd.modificarParticipacion(participacion);
       EvaluarUser(participacion.getParticipantes().getCodActividad());
@@ -96,7 +96,7 @@ public class EvaluacionesController implements Serializable {
     }
     
     public String Aprobado(){
-        participacion.setEstado("EVALUADO");
+      
         participacion.setNota(5);
         bbdd.modificarParticipacion(participacion);
       EvaluarUser(participacion.getParticipantes().getCodActividad());
@@ -104,7 +104,7 @@ public class EvaluacionesController implements Serializable {
         
     }
      public String   Notable(){
-        participacion.setEstado("EVALUADO");
+       
         participacion.setNota(7);
          bbdd.modificarParticipacion(participacion);
        EvaluarUser(participacion.getParticipantes().getCodActividad());
@@ -112,7 +112,7 @@ public class EvaluacionesController implements Serializable {
         
     }
        public String   Sobresaliente(){
-        participacion.setEstado("EVALUADO");
+      
         participacion.setNota(9);
          bbdd.modificarParticipacion(participacion);
        EvaluarUser(participacion.getParticipantes().getCodActividad());
